@@ -23,9 +23,6 @@ Generato dai dati (`verify: true`). Stessa lista nell’app: Menu › “Voci da
 - [ ] **Image Quality/Rec › Image Quality Settings › JPEG Quality** — _Menu_
 - [ ] **Image Quality/Rec › Movie Settings › Rec Frame Rate** — _Menu_. Valori disponibili variano con File Format/NTSC-PAL.
 - [ ] **Drive Mode › Drive Mode** — _Menu_. La guida scrive “Continuous Shooting: Hi/Mid/Lo”; sul display l’etichetta è abbreviata. Controlla.
-- [ ] **Shooting Mode › Memory/Recall Media** → `Slot (quello con la scheda delle basi)` — _Salva per l'evento (video)_. La specifica parla di “Select Media → Camera/Memory Card”: questa voce non esiste in guida. Qui si sceglie solo lo slot; camera vs scheda si decide scegliendo 1–3 oppure M1–M4 in Camera Set. Memory.
-- [ ] **Shooting Mode › Memory/Recall Media** → `Slot (quello con la scheda delle basi)` — _Salva per l'evento (foto)_. Vedi nota sul video: in guida non esiste “Select Media”.
-- [ ] **Scheda o camera: qui si sbaglia più facilmente** — _Guida_. La specifica descrive questo passaggio come Select Media → Memory Card / Camera, poi di nuovo Camera. Nella guida 4.00 della A7R V non esiste Select Media: c'è Memory/Recall Media (Slot 1 / Slot 2). Da provare sulla fotocamera.
 
 ## Exposure/Color
 

@@ -90,6 +90,8 @@ export interface Situazione {
   note: string[];
   avvisi: string[];
   zebre: Zebre | null;
+  /** Ghiera di compensazione: attiva solo con ISO AUTO. */
+  compensazione: { attiva: boolean; nota: string };
 }
 
 export interface PassoSalvataggio {

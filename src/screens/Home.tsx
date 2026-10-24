@@ -1,12 +1,21 @@
-import { guida } from '../lib/data';
+import { guida, situazioneById } from '../lib/data';
+import { useStato } from '../lib/useStato';
 import { href } from '../router';
 import { Callout } from '../components/Callout';
 
 /** Home: impostazioni fisse per lo scatto di prova. L'analisi arriva nella fase 3. */
 export function Home() {
   const { titolo, voci } = guida.fotoDiProva;
+  const { evento } = useStato();
+  const ultima = situazioneById(evento.ultimaSituazione ?? '');
+  const fatte = ultima ? Object.keys(evento.spunte).filter((k) => k.startsWith(`sit/${ultima.id}/`)).length : 0;
   return (
     <div class="page stack">
+      {ultima && (
+        <a class="btn primary block" href={href(`/situazione/${ultima.id}`)}>
+          Riprendi: {ultima.nome} ({fatte} fatte)
+        </a>
+      )}
       <h1>Foto di prova</h1>
       <div class="card">
         <h2 style={{ marginTop: 0 }}>{titolo}</h2>

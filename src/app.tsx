@@ -8,6 +8,8 @@ import { Guida } from './screens/Guida';
 import { PreRipresa } from './screens/PreRipresa';
 import { MenuTree } from './screens/MenuTree';
 import { Verifiche } from './screens/Verifiche';
+import { Eventi } from './screens/Eventi';
+import { EventoBar } from './components/EventoBar';
 
 export function App() {
   const path = usePath();
@@ -21,9 +23,11 @@ export function App() {
   else if (path === '/pre-ripresa') screen = <PreRipresa />;
   else if (path === '/menu') screen = <MenuTree />;
   else if (path === '/verifiche') screen = <Verifiche />;
+  else if (path === '/eventi') screen = <Eventi />;
   else screen = <Home />;
   return (
     <div class="app">
+      <EventoBar />
       <main>{screen}</main>
       <Nav path={path} />
     </div>

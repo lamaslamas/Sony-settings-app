@@ -55,7 +55,7 @@ export function Base({ tipo }: { tipo: 'video' | 'foto' }) {
         <div><span class="name">{base.salvataggio.menu.item}</span> → <span class="value">{base.salvataggio.valore}</span> {!findMenuItem(base.salvataggio.menu) && <b>?</b>}</div>
         <MenuPath r={base.salvataggio.menu} />
         <Callout title="Punto dove è più facile sbagliare" strong>
-          M1–M4 stanno sulla scheda di memoria, nello slot scelto con <b>Memory/Recall Media</b>. Le posizioni 1–3 stanno invece nella camera.
+          Scegli direttamente il numero: <b>M1–M4</b> salvano sulla scheda di memoria, <b>1–3</b> nella camera. Lo slot della scheda si sceglie prima con <b>Memory/Recall Media</b> (Slot 1 / Slot 2).
         </Callout>
       </div>
     </div>

@@ -24,15 +24,17 @@ A ogni evento le carico, le adatto alla sala e le salvo sulla ghiera dei modi:
 Concetti da spiegare chiaramente nell'app:
 - Girare la ghiera **carica** una posizione, non salva mai nulla. Si salva solo con `Camera Set. Memory`.
 - Le modifiche fatte a mano su una posizione si perdono quando giri la ghiera e torni: per tenerle bisogna risalvarle su quella posizione.
-- Per salvare/richiamare da scheda si usa `Select Media` (`Memory Card` / `Camera`), e dopo va rimesso su `Camera`. È il punto dove è più facile sbagliare: evidenzialo.
+- **Salvare**: in `MENU › Shooting › Shooting Mode › Camera Set. Memory` si sceglie direttamente la destinazione: `1`, `2`, `3` salvano nella camera (una serie per ciascuna posizione del selettore Still/Movie/S&Q), `M1`–`M4` salvano sulla scheda di memoria.
+- **Richiamare**: `1`, `2`, `3` si richiamano girando la ghiera dei modi su quella posizione. `M1`–`M4` si richiamano con la ghiera su 1/2/3 (posizione *Recall Camera Setting*) e poi `MENU › Shooting › Shooting Mode › Recall Camera Setting` scegliendo il numero. Prima si imposta Still/Movie/S&Q, poi si richiama; le regolazioni fatte dopo il richiamo prevalgono.
+- **Slot della scheda** per M1–M4: `MENU › Shooting › Shooting Mode › Memory/Recall Media` (`Slot 1` / `Slot 2`). Non esiste un interruttore `Select Media` Memory Card/Camera (verificato sulla guida Sony 4.00). È il punto dove è più facile sbagliare (slot sbagliato, numero sbagliato): evidenzialo.
 
 ## Schermate
 
 1. **Home / Foto di prova** — impostazioni fisse da usare per lo scatto di prova (Mode dial M, ISO 800, 1/50, F4, White Balance 5500K, Creative Look ST), pulsanti "Carica foto dalla fotocamera" e "Scatta col telefono", e link "Solo foto? Salta la foto di prova".
 2. **Lettura luce e scelta situazione** — risultato dell'analisi (livello EV, temperatura colore stimata, dominante, luce mista sì/no) e griglia delle situazioni. Per le situazioni foto la foto di prova è facoltativa.
-3. **Checklist della situazione** — solo le differenze rispetto alla base, con caselle da spuntare. Ogni voce mostra **in cima l'etichetta della scheda** (icona + nome), poi nome voce e valore, poi il percorso completo (`MENU › Scheda › Gruppo › Voce`). Voci da ghiere o obiettivo senza etichetta di scheda. Per il video, ultimo passo: "Salva per l'evento" (`Select Media` → `Camera`, poi `Camera Set. Memory` → `1`).
+3. **Checklist della situazione** — solo le differenze rispetto alla base, con caselle da spuntare. Ogni voce mostra **in cima l'etichetta della scheda** (icona + nome), poi nome voce e valore, poi il percorso completo (`MENU › Scheda › Gruppo › Voce`). Voci da ghiere o obiettivo senza etichetta di scheda. Ultimo passo: "Salva per l'evento" (`Camera Set. Memory` → `1` per il video, `2` per le foto: salvataggio nella camera, lo slot non serve).
 4. **Base video · M1** e **Base foto · M2** — tutte le voci in ordine di menu, raggruppate per scheda e gruppo, con istruzioni per salvarle sulla scheda.
-5. **Guida inizio evento** — passo A (a casa, una volta sola: salvare M1 e M2, backup con `Setup › Reset/Save Settings › Save/Load Settings`), passo B (inizio evento: richiamare M1, foto di prova, regolare, salvare su 1; richiamare M2, ritoccare, salvare su 2), passo C (durante: Movie + 1 per il video, Still + 2 per le foto).
+5. **Guida inizio evento** — passo A (a casa, una volta sola: controllare lo slot con `Memory/Recall Media`, applicare e salvare la base video con `Camera Set. Memory` → `M1` e la base foto → `M2`, backup con `Setup › Reset/Save Settings › Save/Load Settings`), passo B (inizio evento: controllare lo slot; Movie + ghiera 1, `Recall Camera Setting` → `M1`, foto di prova, regolare, `Camera Set. Memory` → `1`; Still + ghiera 2, `Recall Camera Setting` → `M2`, ritoccare, `Camera Set. Memory` → `2`), passo C (durante: Movie + 1 per il video, Still + 2 per le foto).
 6. **Menu navigabile** — l'albero del menu firmware 4.00 consultabile e con ricerca per nome voce.
 7. **Pre-ripresa** — checklist veloce "prima di registrare/scattare" (vedi sotto zebra e ghiera di compensazione).
 
@@ -41,7 +43,13 @@ Concetti da spiegare chiaramente nell'app:
 Video: Intervista chiuso · Intervista aperto · B-roll chiuso · B-roll aperto.
 Foto: Conferenza con persone · Foto di gruppo aperto · Foto di gruppo chiuso · Wildlife aperto · Paesaggio.
 
-Ogni situazione = elenco di differenze rispetto alla base giusta (video → M1, foto → M2), più note e avvisi. Le interviste sono sempre su cavalletto; foto, wildlife e paesaggio sempre a mano libera.
+Ogni situazione = elenco di differenze rispetto alla base giusta (video → M1, foto → M2), più note e avvisi. Le interviste sono sempre su cavalletto; B-roll, foto, wildlife e paesaggio sempre a mano libera.
+
+Decisioni sui valori:
+- **B-roll (chiuso e aperto)**, a mano libera: `SteadyShot` On (la base M1 lo ha Off per il cavalletto), obiettivo AF e OSS on; ISO AUTO consentito, tempo 1/50 o 1/100, diaframma fisso, compensazione + zebre.
+- **Conferenza con persone**: Mode dial M, 1/200, F2.8, ISO AUTO (compensazione attiva).
+- **Foto di gruppo aperto**: diaframma F5.6–F8.
+- **Foto di gruppo chiuso**: Mode dial M, 1/125, F4–F5.6 (F5.6 con più file), ISO AUTO (compensazione attiva).
 
 Esempi già decisi:
 - **Intervista chiuso**: `White Balance` → `Custom 1` misurato su cartoncino grigio; ISO e Aperture in base alla foto di prova (es. ISO 3200, F2.8); Shutter 1/50 (alternativa 1/100 con luci artificiali); `Audio Rec Level` manuale, picchi ~−12 dB; obiettivo: AF, OSS off; avviso neon/sfarfallio; registra il cartoncino grigio a inizio ripresa.
