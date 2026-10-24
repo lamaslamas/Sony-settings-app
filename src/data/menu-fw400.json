@@ -1,0 +1,1590 @@
+{
+  "firmware": "4.00",
+  "source": "Sony Help Guide ILCE-7RM5 (helpguide.sony.net/ilc/2230/v1/en), tabella “Finding functions from MENU” e pagine delle singole voci.",
+  "note": "Nomi in inglese come nella guida. “options” elenca solo valori confermati dal testo della guida o usati dalla specifica; una lista assente/parziale non significa che non ne esistano altri. verify:true = da controllare sulla fotocamera.",
+  "tabs": [
+    {
+      "id": "main",
+      "name": "Main",
+      "icon": "home",
+      "colorToken": "--tab-main",
+      "groups": [
+        {
+          "name": "Shooting settings list",
+          "items": [
+            {
+              "name": "Main menu (shooting setting list)",
+              "note": "Elenco delle impostazioni di ripresa; vedi “Using the Main menu” nella guida."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "shooting",
+      "name": "Shooting",
+      "icon": "camera",
+      "colorToken": "--tab-shooting",
+      "groups": [
+        {
+          "name": "Image Quality/Rec",
+          "items": [
+            {
+              "name": "JPEG/HEIF Switch",
+              "options": [
+                "JPEG",
+                "HEIF"
+              ]
+            },
+            {
+              "name": "Image Quality Settings",
+              "subItems": [
+                {
+                  "name": "File Format",
+                  "options": [
+                    "RAW",
+                    "RAW & JPEG",
+                    "JPEG"
+                  ],
+                  "verify": true,
+                  "note": "Opzioni elencate dal catalogo guida; controlla sulla fotocamera."
+                },
+                {
+                  "name": "RAW File Type",
+                  "options": [
+                    "Lossless Comp (L)",
+                    "Lossless Comp (M)",
+                    "Lossless Comp (S)"
+                  ]
+                },
+                {
+                  "name": "JPEG Quality",
+                  "options": [
+                    "Fine"
+                  ],
+                  "verify": true
+                },
+                {
+                  "name": "HEIF Quality"
+                },
+                {
+                  "name": "JPEG Image Size"
+                },
+                {
+                  "name": "HEIF Image Size"
+                }
+              ]
+            },
+            {
+              "name": "Aspect Ratio",
+              "options": [
+                "3:2"
+              ]
+            },
+            {
+              "name": "File Format",
+              "options": [
+                "XAVC HS 8K",
+                "XAVC HS 4K",
+                "XAVC S 4K",
+                "XAVC S HD",
+                "XAVC S-I 4K",
+                "XAVC S-I HD"
+              ],
+              "note": "File Format dei filmati."
+            },
+            {
+              "name": "Movie Settings",
+              "subItems": [
+                {
+                  "name": "Rec Frame Rate",
+                  "options": [
+                    "24p",
+                    "25p",
+                    "30p",
+                    "50p",
+                    "60p",
+                    "100p",
+                    "120p"
+                  ],
+                  "verify": true,
+                  "note": "Valori disponibili variano con File Format/NTSC-PAL."
+                },
+                {
+                  "name": "Record Setting",
+                  "options": [
+                    "140M 4:2:2 10bit"
+                  ],
+                  "note": "Confermato in guida per XAVC S 4K 25p; altre opzioni non elencate."
+                }
+              ]
+            },
+            {
+              "name": "S&Q Settings"
+            },
+            {
+              "name": "Proxy Settings"
+            },
+            {
+              "name": "APS-C S35 (Super 35mm) Shooting",
+              "options": [
+                "On",
+                "Auto",
+                "Off"
+              ]
+            },
+            {
+              "name": "Long Exposure NR"
+            },
+            {
+              "name": "High ISO NR"
+            },
+            {
+              "name": "HLG Still Image"
+            },
+            {
+              "name": "Color Space"
+            },
+            {
+              "name": "Lens Compensation",
+              "subItems": [
+                {
+                  "name": "Shading Comp.",
+                  "options": [
+                    "Auto",
+                    "Low",
+                    "Off"
+                  ]
+                },
+                {
+                  "name": "Chromatic Aberration Comp.",
+                  "options": [
+                    "Auto",
+                    "Off"
+                  ]
+                },
+                {
+                  "name": "Distortion Comp.",
+                  "options": [
+                    "Auto",
+                    "Off"
+                  ]
+                },
+                {
+                  "name": "Breathing Comp.",
+                  "options": [
+                    "On",
+                    "Off"
+                  ],
+                  "note": "Solo filmati."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Media",
+          "items": [
+            {
+              "name": "Format"
+            },
+            {
+              "name": "Rec. Media Settings",
+              "subItems": [
+                {
+                  "name": "Recording Media (still image)",
+                  "options": [
+                    "Slot 1",
+                    "Slot 2",
+                    "Simult. Recording"
+                  ],
+                  "note": "Nome esatto “Simult. Recording” (la specifica diceva “Simult. Rec.”)."
+                },
+                {
+                  "name": "Recording Media (movie)",
+                  "options": [
+                    "Slot 1",
+                    "Slot 2",
+                    "Simult. Recording"
+                  ],
+                  "note": "Nome esatto “Simult. Recording” (la specifica diceva “Simult. Rec.”)."
+                },
+                {
+                  "name": "Auto Switch Media"
+                }
+              ]
+            },
+            {
+              "name": "Recover Image DB"
+            },
+            {
+              "name": "Display Media Info."
+            }
+          ]
+        },
+        {
+          "name": "File",
+          "items": [
+            {
+              "name": "File/Folder Settings"
+            },
+            {
+              "name": "Select REC Folder"
+            },
+            {
+              "name": "Create New Folder"
+            },
+            {
+              "name": "IPTC Information"
+            },
+            {
+              "name": "Copyright Info"
+            },
+            {
+              "name": "Write Serial Number"
+            },
+            {
+              "name": "File Settings"
+            }
+          ]
+        },
+        {
+          "name": "Shooting Mode",
+          "items": [
+            {
+              "name": "Exposure Ctrl Type",
+              "options": [
+                "P/A/S/M Mode",
+                "Flexible Exp. Mode"
+              ]
+            },
+            {
+              "name": "Recall Camera Setting",
+              "options": [
+                "1",
+                "2",
+                "3",
+                "M1",
+                "M2",
+                "M3",
+                "M4"
+              ],
+              "note": "Richiama una memoria (1–3 dalla camera, M1–M4 dalla scheda)."
+            },
+            {
+              "name": "Camera Set. Memory",
+              "options": [
+                "1",
+                "2",
+                "3",
+                "M1",
+                "M2",
+                "M3",
+                "M4"
+              ],
+              "note": "Registra le impostazioni. 1–3 nella camera, M1–M4 sulla scheda."
+            },
+            {
+              "name": "Memory/Recall Media",
+              "options": [
+                "Slot 1",
+                "Slot 2"
+              ],
+              "note": "Slot della scheda usato per M1–M4."
+            },
+            {
+              "name": "Reg. Custom Shoot Set"
+            }
+          ]
+        },
+        {
+          "name": "Drive Mode",
+          "items": [
+            {
+              "name": "Drive Mode",
+              "options": [
+                "Single Shooting",
+                "Cont. Shooting: Hi+",
+                "Cont. Shooting: Hi",
+                "Cont. Shooting: Mid",
+                "Cont. Shooting: Lo",
+                "Self-timer(Single)",
+                "Self-timer(Cont)",
+                "Cont. Bracket",
+                "Single Bracket",
+                "Focus Bracket",
+                "WB bracket",
+                "DRO Bracket"
+              ],
+              "verify": true,
+              "note": "La guida scrive “Continuous Shooting: Hi/Mid/Lo”; sul display l’etichetta è abbreviata. Controlla."
+            },
+            {
+              "name": "Bracket Settings"
+            },
+            {
+              "name": "Interval Shoot Func."
+            },
+            {
+              "name": "Pixel Shift Multi Shoot."
+            }
+          ]
+        },
+        {
+          "name": "Shutter/Silent",
+          "items": [
+            {
+              "name": "Silent Mode Settings"
+            },
+            {
+              "name": "Shutter Type",
+              "options": [
+                "Mechanical Shutter",
+                "Electronic Shutter"
+              ]
+            },
+            {
+              "name": "e-Front Curtain Shut.",
+              "options": [
+                "On",
+                "Off"
+              ]
+            },
+            {
+              "name": "Release w/o Lens",
+              "options": [
+                "Enable",
+                "Disable"
+              ]
+            },
+            {
+              "name": "Release w/o Card",
+              "options": [
+                "Enable",
+                "Disable"
+              ]
+            },
+            {
+              "name": "Anti-flicker Set.",
+              "subItems": [
+                {
+                  "name": "Anti-flicker Shoot.",
+                  "options": [
+                    "On",
+                    "Off"
+                  ],
+                  "note": "Solo foto."
+                },
+                {
+                  "name": "Var. Shutter",
+                  "options": [
+                    "On",
+                    "Off"
+                  ],
+                  "note": "Solo con tempo regolabile a mano (foto e filmati)."
+                },
+                {
+                  "name": "Var. Shutter Set."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Audio Recording",
+          "items": [
+            {
+              "name": "Audio Recording",
+              "options": [
+                "On",
+                "Off"
+              ]
+            },
+            {
+              "name": "Audio Rec Level",
+              "note": "Livello numerico regolato con + / −."
+            },
+            {
+              "name": "Audio Out Timing",
+              "options": [
+                "Live",
+                "Lip Sync"
+              ]
+            },
+            {
+              "name": "Wind Noise Reduct.",
+              "options": [
+                "Auto",
+                "On",
+                "Off"
+              ]
+            },
+            {
+              "name": "Shoe Audio Set."
+            }
+          ]
+        },
+        {
+          "name": "TC/UB",
+          "items": [
+            {
+              "name": "Time Code Preset"
+            },
+            {
+              "name": "User Bit Preset"
+            },
+            {
+              "name": "Time Code Format"
+            },
+            {
+              "name": "Time Code Run",
+              "options": [
+                "Rec Run",
+                "Free Run"
+              ]
+            },
+            {
+              "name": "Time Code Make"
+            },
+            {
+              "name": "User Bit Time Rec"
+            }
+          ]
+        },
+        {
+          "name": "Image Stabilization",
+          "items": [
+            {
+              "name": "SteadyShot",
+              "subItems": [
+                {
+                  "name": "SteadyShot",
+                  "options": [
+                    "On",
+                    "Off"
+                  ]
+                }
+              ],
+              "note": "Il menu mostra la voce SteadyShot (On/Off) e il modo (Standard/Active)."
+            },
+            {
+              "name": "SteadyShot Adjust."
+            },
+            {
+              "name": "Focal Length"
+            }
+          ]
+        },
+        {
+          "name": "Zoom",
+          "items": [
+            {
+              "name": "Zoom"
+            },
+            {
+              "name": "Zoom Range"
+            },
+            {
+              "name": "Custom Key Z. Speed"
+            },
+            {
+              "name": "Remote Zoom Speed"
+            }
+          ]
+        },
+        {
+          "name": "Shooting Display",
+          "items": [
+            {
+              "name": "Grid Line Display",
+              "options": [
+                "On",
+                "Off"
+              ]
+            },
+            {
+              "name": "Grid Line Type",
+              "options": [
+                "Rule of 3rds Grid",
+                "Square Grid",
+                "Diag. + Square Grid"
+              ]
+            },
+            {
+              "name": "Live View Display Set."
+            },
+            {
+              "name": "Emphasized REC Display",
+              "options": [
+                "On",
+                "Off"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Marker Display",
+          "items": [
+            {
+              "name": "Marker Display"
+            },
+            {
+              "name": "Center Marker"
+            },
+            {
+              "name": "Aspect Marker"
+            },
+            {
+              "name": "Safety Zone"
+            },
+            {
+              "name": "Guideframe"
+            }
+          ]
+        },
+        {
+          "name": "Shooting Option",
+          "items": [
+            {
+              "name": "Self-timer"
+            },
+            {
+              "name": "AutoCreateStillImage"
+            },
+            {
+              "name": "after still img crt"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "exposure",
+      "name": "Exposure/Color",
+      "icon": "exposure",
+      "colorToken": "--tab-exposure",
+      "groups": [
+        {
+          "name": "Exposure",
+          "items": [
+            {
+              "name": "BULB Timer Settings"
+            },
+            {
+              "name": "Auto Slow Shutter",
+              "options": [
+                "On",
+                "Off"
+              ]
+            },
+            {
+              "name": "ISO",
+              "options": [
+                "ISO AUTO"
+              ],
+              "open": true,
+              "note": "Valori numerici manuali (es. 800, 3200) oppure ISO AUTO."
+            },
+            {
+              "name": "ISO Range Limit",
+              "subItems": [
+                {
+                  "name": "Minimum"
+                },
+                {
+                  "name": "Maximum"
+                }
+              ]
+            },
+            {
+              "name": "ISO AUTO Min. SS",
+              "options": [
+                "Slower",
+                "Slow",
+                "Standard",
+                "Fast",
+                "Faster"
+              ]
+            },
+            {
+              "name": "Auto/Manual Swt. Set."
+            }
+          ]
+        },
+        {
+          "name": "Exposure Comp.",
+          "items": [
+            {
+              "name": "Exposure Comp."
+            },
+            {
+              "name": "Exposure step"
+            },
+            {
+              "name": "Exposure Std. Adjust"
+            }
+          ]
+        },
+        {
+          "name": "Metering",
+          "items": [
+            {
+              "name": "Metering Mode",
+              "options": [
+                "Multi",
+                "Center",
+                "Spot",
+                "Entire Screen Avg.",
+                "Highlight"
+              ]
+            },
+            {
+              "name": "Face Priority in Multi Metering",
+              "options": [
+                "On",
+                "Off"
+              ]
+            },
+            {
+              "name": "Spot Metering Point"
+            },
+            {
+              "name": "AEL w/ Shutter"
+            }
+          ]
+        },
+        {
+          "name": "Flash",
+          "items": [
+            {
+              "name": "Flash Mode"
+            },
+            {
+              "name": "Flash Comp."
+            },
+            {
+              "name": "Exp.comp.set"
+            },
+            {
+              "name": "Wireless Flash"
+            },
+            {
+              "name": "Red Eye Reduction"
+            },
+            {
+              "name": "External Flash Set."
+            },
+            {
+              "name": "Reg. Flash Shooting Set"
+            }
+          ]
+        },
+        {
+          "name": "White Balance",
+          "items": [
+            {
+              "name": "White Balance",
+              "options": [
+                "Auto",
+                "Custom 1",
+                "Custom 2",
+                "Custom 3"
+              ],
+              "open": true,
+              "note": "Anche Kelvin fissi (es. 5500K)."
+            },
+            {
+              "name": "Priority Set in AWB"
+            },
+            {
+              "name": "Shutter AWB Lock"
+            },
+            {
+              "name": "Shockless WB"
+            }
+          ]
+        },
+        {
+          "name": "Color/Tone",
+          "items": [
+            {
+              "name": "D-Range Optimizer",
+              "options": [
+                "Auto",
+                "Off"
+              ]
+            },
+            {
+              "name": "Creative Look",
+              "options": [
+                "ST"
+              ]
+            },
+            {
+              "name": "Picture Profile",
+              "options": [
+                "Off",
+                "PP11 (S-Cinetone)"
+              ],
+              "note": "PP1–PP11 per i filmati."
+            },
+            {
+              "name": "Soft Skin Effect",
+              "options": [
+                "Off"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Zebra Display",
+          "items": [
+            {
+              "name": "Zebra Display",
+              "options": [
+                "On",
+                "Off"
+              ]
+            },
+            {
+              "name": "Zebra Level",
+              "options": [
+                "70",
+                "75",
+                "80",
+                "85",
+                "90",
+                "95",
+                "100",
+                "100+"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "focus",
+      "name": "Focus",
+      "icon": "focus",
+      "colorToken": "--tab-focus",
+      "groups": [
+        {
+          "name": "AF/MF",
+          "items": [
+            {
+              "name": "Focus Mode",
+              "options": [
+                "Single-shot AF",
+                "Automatic AF",
+                "Continuous AF",
+                "DMF",
+                "Manual Focus"
+              ]
+            },
+            {
+              "name": "Priority Set in AF-S"
+            },
+            {
+              "name": "Priority Set in AF-C",
+              "options": [
+                "AF",
+                "Release",
+                "Balanced Emphasis"
+              ]
+            },
+            {
+              "name": "AF Tracking Sensitivity"
+            },
+            {
+              "name": "AF Illuminator",
+              "options": [
+                "Auto",
+                "Off"
+              ],
+              "note": "Non disponibile in Movie/S&Q."
+            },
+            {
+              "name": "Aperture Drive in AF"
+            },
+            {
+              "name": "AF w/ Shutter"
+            },
+            {
+              "name": "Full Time DMF"
+            },
+            {
+              "name": "Pre-AF"
+            },
+            {
+              "name": "AF Transition Speed",
+              "options": [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7"
+              ]
+            },
+            {
+              "name": "AF Subj. Shift Sensitivity",
+              "options": [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5"
+              ]
+            },
+            {
+              "name": "AF Assist",
+              "options": [
+                "On",
+                "Off"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Focus Area",
+          "items": [
+            {
+              "name": "Focus Area",
+              "options": [
+                "Wide",
+                "Zone",
+                "Center Fix",
+                "Spot: XL",
+                "Spot: L",
+                "Spot: M",
+                "Spot: S",
+                "Expand Spot",
+                "Tracking: Wide",
+                "Tracking: Zone",
+                "Tracking: Spot M",
+                "Tracking: Expand Spot"
+              ]
+            },
+            {
+              "name": "Focus Area Limit"
+            },
+            {
+              "name": "Switch V/H AF Area"
+            },
+            {
+              "name": "Focus Area Color"
+            },
+            {
+              "name": "AF Area Registration"
+            },
+            {
+              "name": "Del. Regist. AF Area"
+            },
+            {
+              "name": "AF Area Auto Clear"
+            },
+            {
+              "name": "Area Disp. dur Tracking"
+            },
+            {
+              "name": "AF-C Area Display"
+            },
+            {
+              "name": "Phase Detect. Area"
+            },
+            {
+              "name": "Circ. of Focus Point"
+            },
+            {
+              "name": "AF Frame Move Amt"
+            }
+          ]
+        },
+        {
+          "name": "Subject Recognition",
+          "items": [
+            {
+              "name": "Subject Recog in AF",
+              "options": [
+                "On",
+                "Off"
+              ]
+            },
+            {
+              "name": "Recognition Target",
+              "options": [
+                "Human",
+                "Animal/Bird",
+                "Animal",
+                "Bird",
+                "Insect",
+                "Car/Train",
+                "Airplane"
+              ]
+            },
+            {
+              "name": "Recog Trgt Select Set"
+            },
+            {
+              "name": "Right/Left Eye Select",
+              "options": [
+                "Auto",
+                "Right Eye",
+                "Left Eye"
+              ]
+            },
+            {
+              "name": "Sbj Recog Frm Disp."
+            },
+            {
+              "name": "Face Memory"
+            },
+            {
+              "name": "Regist. Face Priority"
+            }
+          ]
+        },
+        {
+          "name": "Focus Assistant",
+          "items": [
+            {
+              "name": "Focus Map"
+            },
+            {
+              "name": "Auto Magnifier in MF"
+            },
+            {
+              "name": "Focus Magnifier"
+            },
+            {
+              "name": "Focus Magnif. Time"
+            },
+            {
+              "name": "Initial Focus Mag."
+            },
+            {
+              "name": "AF in Focus Mag."
+            }
+          ]
+        },
+        {
+          "name": "Peaking Display",
+          "items": [
+            {
+              "name": "Peaking Display"
+            },
+            {
+              "name": "Peaking Level"
+            },
+            {
+              "name": "Peaking Color"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "playback",
+      "name": "Playback",
+      "icon": "play",
+      "colorToken": "--tab-playback",
+      "groups": [
+        {
+          "name": "Playback Target",
+          "items": [
+            {
+              "name": "Play Set of Multi. Media"
+            },
+            {
+              "name": "Disp Set of Multi Media"
+            },
+            {
+              "name": "Playback Filter Condition"
+            },
+            {
+              "name": "Image Order"
+            }
+          ]
+        },
+        {
+          "name": "Magnification",
+          "items": [
+            {
+              "name": "Enlarge Image"
+            },
+            {
+              "name": "Enlarge Initial Mag."
+            },
+            {
+              "name": "Enlarge Initial Position"
+            }
+          ]
+        },
+        {
+          "name": "Selection/Memo",
+          "items": [
+            {
+              "name": "Protect"
+            },
+            {
+              "name": "Rating"
+            },
+            {
+              "name": "Rating Set(Custom Key)"
+            },
+            {
+              "name": "Clip Flag"
+            }
+          ]
+        },
+        {
+          "name": "Delete",
+          "items": [
+            {
+              "name": "Delete"
+            },
+            {
+              "name": "Delete pressing twice"
+            },
+            {
+              "name": "Delete confirm."
+            }
+          ]
+        },
+        {
+          "name": "Edit",
+          "items": [
+            {
+              "name": "Crop"
+            },
+            {
+              "name": "Rotate"
+            },
+            {
+              "name": "Copy"
+            },
+            {
+              "name": "Photo Capture"
+            },
+            {
+              "name": "Create Still Image"
+            },
+            {
+              "name": "after still img crt"
+            }
+          ]
+        },
+        {
+          "name": "Viewing",
+          "items": [
+            {
+              "name": "JPEG/HEIF Switch"
+            },
+            {
+              "name": "Cont. Play for Interval"
+            },
+            {
+              "name": "Play Speed for Interval"
+            },
+            {
+              "name": "Slide Show"
+            },
+            {
+              "name": "Image Index"
+            },
+            {
+              "name": "Display as Group"
+            }
+          ]
+        },
+        {
+          "name": "Playback Option",
+          "items": [
+            {
+              "name": "Display Rotation"
+            },
+            {
+              "name": "Focus Frame Display"
+            },
+            {
+              "name": "Disp Specified Time Img."
+            },
+            {
+              "name": "Image Jump Setting"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "network",
+      "name": "Network",
+      "icon": "network",
+      "colorToken": "--tab-network",
+      "groups": [
+        {
+          "name": "Smartphone Connection",
+          "items": [
+            {
+              "name": "Smartphone Connection"
+            }
+          ]
+        },
+        {
+          "name": "Remote Shoot Function",
+          "items": [
+            {
+              "name": "Remote Shoot Function"
+            }
+          ]
+        },
+        {
+          "name": "Select on Cam & Send",
+          "items": [
+            {
+              "name": "Select on Cam & Send"
+            },
+            {
+              "name": "Reset Transfer Status"
+            },
+            {
+              "name": "Cnct. while Power OFF"
+            }
+          ]
+        },
+        {
+          "name": "Remote Shoot Setting",
+          "items": [
+            {
+              "name": "Remote Shoot Setting"
+            }
+          ]
+        },
+        {
+          "name": "FTP Transfer",
+          "items": [
+            {
+              "name": "FTP Transfer Func."
+            }
+          ]
+        },
+        {
+          "name": "Streaming",
+          "items": [
+            {
+              "name": "Network Streaming"
+            },
+            {
+              "name": "USB Streaming"
+            }
+          ]
+        },
+        {
+          "name": "Creators' Cloud",
+          "items": [
+            {
+              "name": "Cloud Connection"
+            },
+            {
+              "name": "Cloud Information"
+            }
+          ]
+        },
+        {
+          "name": "Wi-Fi",
+          "items": [
+            {
+              "name": "Wi-Fi Connect"
+            },
+            {
+              "name": "WPS Push"
+            },
+            {
+              "name": "Access Point Set."
+            },
+            {
+              "name": "Wi-Fi Frequency Band"
+            },
+            {
+              "name": "Display Wi-Fi Info."
+            },
+            {
+              "name": "SSID/PW Reset"
+            }
+          ]
+        },
+        {
+          "name": "Bluetooth",
+          "items": [
+            {
+              "name": "Bluetooth Function"
+            },
+            {
+              "name": "Pairing"
+            },
+            {
+              "name": "Manage Paired Device"
+            },
+            {
+              "name": "Bluetooth Rmt Ctrl"
+            },
+            {
+              "name": "Disp Device Address"
+            }
+          ]
+        },
+        {
+          "name": "Wired LAN",
+          "items": [
+            {
+              "name": "IP Address Setting"
+            },
+            {
+              "name": "Display Wired LAN Info."
+            }
+          ]
+        },
+        {
+          "name": "USB-LAN/Tethering",
+          "items": [
+            {
+              "name": "USB-LAN Connection"
+            },
+            {
+              "name": "USB-LAN Disconnection"
+            },
+            {
+              "name": "Tethering Connection"
+            },
+            {
+              "name": "Tethering Disconnection"
+            }
+          ]
+        },
+        {
+          "name": "Network Option",
+          "items": [
+            {
+              "name": "Airplane Mode"
+            },
+            {
+              "name": "Edit Device Name"
+            },
+            {
+              "name": "Import Root Certificate"
+            },
+            {
+              "name": "Access Authen. Settings"
+            },
+            {
+              "name": "Access Authen. Info"
+            },
+            {
+              "name": "Security(IPsec)"
+            },
+            {
+              "name": "Wi-Fi Direct Settings"
+            },
+            {
+              "name": "Reset Network Set."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "setup",
+      "name": "Setup",
+      "icon": "setup",
+      "colorToken": "--tab-setup",
+      "groups": [
+        {
+          "name": "Area/Date",
+          "items": [
+            {
+              "name": "Language"
+            },
+            {
+              "name": "Area/Date/Time Setting"
+            },
+            {
+              "name": "NTSC/PAL Selector",
+              "options": [
+                "NTSC",
+                "PAL"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Reset/Save Settings",
+          "items": [
+            {
+              "name": "Setting Reset"
+            },
+            {
+              "name": "Save/Load Settings"
+            }
+          ]
+        },
+        {
+          "name": "Operation Customize",
+          "items": [
+            {
+              "name": "Custom Key/Dial Set."
+            },
+            {
+              "name": "Fn Menu Settings"
+            },
+            {
+              "name": "Different Set for Still/Mv",
+              "note": "Spunta separata foto/video: Aperture, Shutter Speed, ISO, Exposure Comp., Metering Mode, White Balance, ..."
+            },
+            {
+              "name": "DISP (Screen Disp) Set"
+            },
+            {
+              "name": "REC w/ Shutter"
+            },
+            {
+              "name": "with Shutter Button"
+            },
+            {
+              "name": "Zoom Ring Rotate"
+            }
+          ]
+        },
+        {
+          "name": "Dial Customize",
+          "items": [
+            {
+              "name": "My Dial Settings"
+            },
+            {
+              "name": "Av/Tv Rotate"
+            },
+            {
+              "name": "Function Ring(Lens)"
+            },
+            {
+              "name": "Lock Operation Parts"
+            }
+          ]
+        },
+        {
+          "name": "Touch Operation",
+          "items": [
+            {
+              "name": "Touch Panel/Pad"
+            },
+            {
+              "name": "Touch Panel Settings"
+            },
+            {
+              "name": "Touch Pad Settings"
+            },
+            {
+              "name": "Touch Sensitivity"
+            }
+          ]
+        },
+        {
+          "name": "Accessibility",
+          "items": [
+            {
+              "name": "Screen Reader"
+            },
+            {
+              "name": "Enlarge Screen"
+            }
+          ]
+        },
+        {
+          "name": "Finder/Monitor",
+          "items": [
+            {
+              "name": "Select Finder/Monitor"
+            },
+            {
+              "name": "Monitor Brightness",
+              "options": [
+                "Manual",
+                "Sunny Weather"
+              ],
+              "note": "Manual: da −2 a +2."
+            },
+            {
+              "name": "Viewfinder Bright."
+            },
+            {
+              "name": "Finder Color Temp."
+            },
+            {
+              "name": "Viewfinder Magnifi."
+            },
+            {
+              "name": "Display Quality"
+            },
+            {
+              "name": "Finder Frame Rate"
+            },
+            {
+              "name": "Monitor Flip Direction"
+            },
+            {
+              "name": "Vertical Display"
+            }
+          ]
+        },
+        {
+          "name": "Display Option",
+          "items": [
+            {
+              "name": "TC/UB Disp. Setting"
+            },
+            {
+              "name": "Gamma Display Assist"
+            },
+            {
+              "name": "Gamma Disp. Assist Typ."
+            },
+            {
+              "name": "Remain Shoot Display"
+            },
+            {
+              "name": "Auto Review"
+            }
+          ]
+        },
+        {
+          "name": "Power Setting Option",
+          "items": [
+            {
+              "name": "Auto Monitor OFF"
+            },
+            {
+              "name": "Power Save Start Time"
+            },
+            {
+              "name": "Power Save by Monitor"
+            },
+            {
+              "name": "Auto Power OFF Temp.",
+              "options": [
+                "Standard",
+                "High"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Sound Option",
+          "items": [
+            {
+              "name": "Volume Settings"
+            },
+            {
+              "name": "4ch Audio Monitoring"
+            },
+            {
+              "name": "Audio signals"
+            }
+          ]
+        },
+        {
+          "name": "USB",
+          "items": [
+            {
+              "name": "USB Connection Mode"
+            },
+            {
+              "name": "USB LUN Setting"
+            },
+            {
+              "name": "USB Power Supply"
+            }
+          ]
+        },
+        {
+          "name": "External Output",
+          "items": [
+            {
+              "name": "HDMI Resolution"
+            },
+            {
+              "name": "HDMI Output Settings"
+            },
+            {
+              "name": "HDMI Info. Display"
+            },
+            {
+              "name": "CTRL FOR HDMI"
+            }
+          ]
+        },
+        {
+          "name": "Setup Option",
+          "items": [
+            {
+              "name": "Video Light Mode"
+            },
+            {
+              "name": "Anti-dust Function"
+            },
+            {
+              "name": "Auto Pixel Mapping"
+            },
+            {
+              "name": "Pixel Mapping"
+            },
+            {
+              "name": "Version"
+            },
+            {
+              "name": "Display Serial Number"
+            },
+            {
+              "name": "Privacy Notice"
+            },
+            {
+              "name": "Certification Logo"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mymenu",
+      "name": "My Menu",
+      "icon": "star",
+      "colorToken": "--tab-mymenu",
+      "groups": [
+        {
+          "name": "My Menu Setting",
+          "items": [
+            {
+              "name": "Add Item"
+            },
+            {
+              "name": "Sort Item"
+            },
+            {
+              "name": "Delete Item"
+            },
+            {
+              "name": "Delete Page"
+            },
+            {
+              "name": "Delete All"
+            },
+            {
+              "name": "Display From My Menu"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

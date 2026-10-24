@@ -1,0 +1,46 @@
+{
+  "id": "M2",
+  "titolo": "Base foto · M2",
+  "descrizione": "Base per le foto, salvata sulla scheda di memoria come M2. Non si modifica durante gli eventi.",
+  "dials": {
+    "stillMovieSq": "Still",
+    "mode": "A"
+  },
+  "salvataggio": {
+    "dove": "Scheda di memoria (M2)",
+    "menu": { "tab": "shooting", "group": "Shooting Mode", "item": "Camera Set. Memory" },
+    "valore": "M2"
+  },
+  "entries": [
+    { "tab": "shooting", "group": "Image Quality/Rec", "item": "JPEG/HEIF Switch", "value": "JPEG" },
+    { "tab": "shooting", "group": "Image Quality/Rec", "item": "Image Quality Settings", "sub": "File Format", "value": "RAW & JPEG", "verify": true, "note": "Il “File Format” foto sta dentro Image Quality Settings; il “File Format” del menu è quello dei filmati." },
+    { "tab": "shooting", "group": "Image Quality/Rec", "item": "Image Quality Settings", "sub": "RAW File Type", "value": "Lossless Comp (L)" },
+    { "tab": "shooting", "group": "Image Quality/Rec", "item": "Image Quality Settings", "sub": "JPEG Quality", "value": "Fine" },
+    { "tab": "shooting", "group": "Image Quality/Rec", "item": "Aspect Ratio", "value": "3:2" },
+    { "tab": "shooting", "group": "Image Quality/Rec", "item": "Lens Compensation", "sub": "Shading Comp.", "value": "Auto", "verify": true, "note": "La specifica dice solo “Lens Compensation Auto”: applicato alle tre voci Shading / Chromatic Aberration / Distortion." },
+    { "tab": "shooting", "group": "Image Quality/Rec", "item": "Lens Compensation", "sub": "Chromatic Aberration Comp.", "value": "Auto", "verify": true },
+    { "tab": "shooting", "group": "Image Quality/Rec", "item": "Lens Compensation", "sub": "Distortion Comp.", "value": "Auto", "verify": true },
+    { "tab": "shooting", "group": "Media", "item": "Rec. Media Settings", "sub": "Recording Media (still image)", "value": "Simult. Recording", "verify": true, "note": "Nome esatto in guida: “Simult. Recording”. Valore scelto da verificare." },
+    { "tab": "shooting", "group": "Drive Mode", "item": "Drive Mode", "value": "Cont. Shooting: Lo", "verify": true, "note": "Controlla come compare l’etichetta sul display." },
+    { "tab": "shooting", "group": "Shutter/Silent", "item": "Shutter Type", "value": "Mechanical Shutter" },
+    { "tab": "shooting", "group": "Shutter/Silent", "item": "Anti-flicker Set.", "sub": "Anti-flicker Shoot.", "value": "On" },
+    { "tab": "shooting", "group": "Image Stabilization", "item": "SteadyShot", "value": "On" },
+    { "tab": "exposure", "group": "Exposure", "item": "ISO", "value": "ISO AUTO" },
+    { "tab": "exposure", "group": "Exposure", "item": "ISO Range Limit", "sub": "Minimum", "value": "100", "verify": true, "note": "La specifica dice “100–12800”: in guida ci sono Minimum e Maximum separati (anche in ISO › ISO AUTO Minimum/Maximum)." },
+    { "tab": "exposure", "group": "Exposure", "item": "ISO Range Limit", "sub": "Maximum", "value": "12800", "verify": true },
+    { "tab": "exposure", "group": "Exposure", "item": "ISO AUTO Min. SS", "value": "Faster" },
+    { "tab": "exposure", "group": "Metering", "item": "Metering Mode", "value": "Multi" },
+    { "tab": "exposure", "group": "Metering", "item": "Face Priority in Multi Metering", "value": "On" },
+    { "tab": "exposure", "group": "White Balance", "item": "White Balance", "value": "Auto", "note": "RAW: correzione in Lightroom." },
+    { "tab": "exposure", "group": "Color/Tone", "item": "D-Range Optimizer", "value": "Auto", "verify": true, "note": "La specifica lo chiama “Dynamic Range Opt.”; il nome in guida è “D-Range Optimizer”." },
+    { "tab": "exposure", "group": "Color/Tone", "item": "Creative Look", "value": "ST" },
+    { "tab": "exposure", "group": "Color/Tone", "item": "Picture Profile", "value": "Off" },
+    { "tab": "focus", "group": "AF/MF", "item": "Focus Mode", "value": "Continuous AF" },
+    { "tab": "focus", "group": "AF/MF", "item": "Priority Set in AF-C", "value": "Balanced Emphasis" },
+    { "tab": "focus", "group": "Focus Area", "item": "Focus Area", "value": "Wide" },
+    { "tab": "focus", "group": "Subject Recognition", "item": "Subject Recog in AF", "value": "On" },
+    { "tab": "focus", "group": "Subject Recognition", "item": "Recognition Target", "value": "Human" },
+    { "tab": "focus", "group": "Subject Recognition", "item": "Right/Left Eye Select", "value": "Auto" }
+  ],
+  "setup": []
+}
