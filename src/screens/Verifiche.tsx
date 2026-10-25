@@ -7,7 +7,7 @@ export function Verifiche() {
   const groups = collectVerify();
   return (
     <div class="page stack">
-      <a href={href('/menu')}>← Menu</a>
+      <a class="backlink" href={href('/menu')}>← Menu</a>
       <h1>Da verificare</h1>
       <p class="dim">Voci non confermate dalla guida Sony: controllale sulla fotocamera.</p>
       {groups.map((g) => (

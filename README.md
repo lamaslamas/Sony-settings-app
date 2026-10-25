@@ -2,7 +2,7 @@
 
 Web app personale (PWA, mobile-first, in italiano) che guida a impostare la Sony A7R V (firmware 4.00) in base alla situazione di ripresa. Non controlla la fotocamera: dice cosa impostare e dove trovarlo nel menu.
 
-La specifica completa è in [SPEC.md](SPEC.md). Stato: **fase 3** (analisi locale della foto di prova: EXIF, anteprima ARW, EV, temperatura colore, tinta, luce mista). Situazioni e basi M1/M2 in due viste a scelta (wizard o lista), menu in stile camera. Fase 4: proposte di valori dalla lettura con regole fisse e correzioni spiegate. Prossima: PWA/offline e accessibilità.
+La specifica completa è in [SPEC.md](SPEC.md). Stato: **fase 3** (analisi locale della foto di prova: EXIF, anteprima ARW, EV, temperatura colore, tinta, luce mista). Situazioni e basi M1/M2 in due viste a scelta (wizard o lista), menu in stile camera. Fase 4: proposte di valori dalla lettura con regole fisse e correzioni spiegate. Fase 5: PWA installabile e offline, accessibilità.
 
 ## Comandi
 
@@ -23,3 +23,14 @@ npm run build    # build in dist/
 ## Pubblicazione
 
 GitHub Pages con deploy automatico (`.github/workflows/deploy.yml`) a ogni push su `main`. Va attivato una volta: Settings › Pages › Source = “GitHub Actions”.
+
+## Uso sul telefono
+
+1. Apri il sito una volta con la rete: l'app si salva sul telefono (nella Home compare «Offline → pronta ✓»).
+2. Installala: Android/Chrome «Installa l'app» (pulsante nella Home); iPhone/Safari Condividi › Aggiungi alla schermata Home.
+3. Da quel momento funziona senza rete: dati, wizard, liste, menu e analisi della foto.
+4. Quando c'è una nuova versione compare «Nuova versione pronta: aggiorna» nella Home; non si aggiorna da sola a metà di una ripresa.
+
+## Accessibilità
+
+Testo minimo 16 px, aree tattili da 48 px, contrasto controllato dai test (`tests/contrasto.test.ts`), tema scuro, rispetta il testo ingrandito del telefono (nessuno scroll orizzontale) e `prefers-reduced-motion`.

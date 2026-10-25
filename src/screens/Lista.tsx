@@ -69,7 +69,7 @@ export function Lista({ id }: { id: string }) {
   return (
     <div class="page stack">
       <div class="row" style={{ justifyContent: 'space-between' }}>
-        <a href={href('/luce')}>← Situazioni</a>
+        <a class="backlink" href={href('/luce')}>← Situazioni</a>
       </div>
       <SelettoreVista />
       <h1 style={{ marginBottom: 0 }}>{s.nome}</h1>

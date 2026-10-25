@@ -28,7 +28,8 @@ export function Luce() {
       <h1>Lettura luce</h1>
       {!l && (
         <div class="card">
-          <p style={{ marginBottom: 0 }}>Nessuna foto di prova analizzata. <a href={href('/')}>Fai la foto di prova</a> oppure scegli subito la situazione.</p>
+          <p style={{ marginBottom: 0 }}>Nessuna foto di prova analizzata. Falla ora, oppure scegli subito la situazione.</p>
+          <a class="btn block" style={{ marginTop: 12 }} href={href('/')}>Fai la foto di prova</a>
         </div>
       )}
       {l && !l.valida && (

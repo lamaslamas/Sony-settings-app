@@ -1,4 +1,4 @@
-import { useState } from 'preact/hooks';
+import { useEffect, useRef, useState } from 'preact/hooks';
 import type { ComponentChildren } from 'preact';
 import { Icon } from './Icon';
 
@@ -24,6 +24,14 @@ export function WizardShell(p: {
   children: ComponentChildren;
 }) {
   const [aperto, setAperto] = useState(false);
+  const barra = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const el = barra.current;
+    if (!el) return;
+    const ro = new ResizeObserver(() => document.documentElement.style.setProperty('--wizh', `${Math.ceil(el.getBoundingClientRect().height)}px`));
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
   return (
     <div class="page stack wizard">
       <div class="row" style={{ justifyContent: 'space-between' }}>
@@ -49,7 +57,7 @@ export function WizardShell(p: {
 
       {p.children}
 
-      <div class="wizbar">
+      <div class="wizbar" ref={barra}>
         <button class="btn" disabled={p.idx === 0} onClick={() => p.onVai(p.idx - 1)} aria-label="Passo precedente"><Icon name="back" />Indietro</button>
         {p.tipo === 'fine' ? null : p.tipo === 'intro' ? (
           <button class="btn primary" onClick={() => p.onAvanti(false)}>Inizia<Icon name="next" /></button>

@@ -5,6 +5,7 @@ import { aggiornaEvento } from '../lib/storage';
 import { analizzaFile } from '../lib/foto';
 import { href } from '../router';
 import { Callout } from '../components/Callout';
+import { StatoApp } from '../components/StatoApp';
 
 /** Home: impostazioni fisse per lo scatto di prova, caricamento e analisi (tutto in locale). */
 export function Home() {
@@ -61,6 +62,7 @@ export function Home() {
         <p class="small dim">JPEG, HEIF o RAW Sony (ARW). Tutto avviene sul telefono, anche senza rete. Il RAW non viene mai caricato: ne leggo solo l'anteprima.</p>
         <a class="btn block" href={href('/luce')}>Solo foto? Salta la foto di prova</a>
       </div>
+      <StatoApp />
     </div>
   );
 }
