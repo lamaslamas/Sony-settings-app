@@ -2,7 +2,7 @@
 
 Web app personale (PWA, mobile-first, in italiano) che guida a impostare la Sony A7R V (firmware 4.00) in base alla situazione di ripresa. Non controlla la fotocamera: dice cosa impostare e dove trovarlo nel menu.
 
-La specifica completa è in [SPEC.md](SPEC.md). Stato: **fase 3** (analisi locale della foto di prova: EXIF, anteprima ARW, EV, temperatura colore, tinta, luce mista). Wizard per le situazioni e menu in stile camera. Fase 4: proposte di valori dalla lettura con regole fisse e correzioni spiegate. Prossima: PWA/offline e accessibilità.
+La specifica completa è in [SPEC.md](SPEC.md). Stato: **fase 3** (analisi locale della foto di prova: EXIF, anteprima ARW, EV, temperatura colore, tinta, luce mista). Situazioni e basi M1/M2 in due viste a scelta (wizard o lista), menu in stile camera. Fase 4: proposte di valori dalla lettura con regole fisse e correzioni spiegate. Prossima: PWA/offline e accessibilità.
 
 ## Comandi
 

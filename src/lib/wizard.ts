@@ -55,3 +55,30 @@ export function chiavePasso(sid: string, p: Passo): string | null {
 
 /** Vero se la voce di menu del passo esiste davvero in menu-fw400.json. */
 export const vocePresente = (d: Diff) => d.source !== 'menu' || (!!d.ref && !!findMenuItem(d.ref));
+
+// ---- Wizard delle basi M1 / M2 (si fanno una volta sola, a casa) ----
+
+import type { BaseEntry, BaseFile } from '../types';
+import { groupEntries } from './data';
+
+export type PassoBase =
+  | { tipo: 'intro' }
+  | { tipo: 'voce'; entry: BaseEntry; setup: boolean }
+  | { tipo: 'salva' }
+  | { tipo: 'fine' };
+
+const appiattisci = (entries: BaseEntry[]): BaseEntry[] => groupEntries(entries).flatMap((t) => t.groups.flatMap((g) => g.entries));
+
+/** Passi di una base: prima le voci salvate nella memoria (in ordine di menu), poi quelle di Setup (una volta sola), poi il salvataggio. */
+export function passiBase(base: BaseFile): PassoBase[] {
+  return [
+    { tipo: 'intro' },
+    ...appiattisci(base.entries).map((entry): PassoBase => ({ tipo: 'voce', entry, setup: false })),
+    ...appiattisci(base.setup).map((entry): PassoBase => ({ tipo: 'voce', entry, setup: true })),
+    { tipo: 'salva' },
+    { tipo: 'fine' },
+  ];
+}
+
+export const chiavePassoBase = (baseId: string, i: number, p: PassoBase): string | null =>
+  p.tipo === 'voce' || p.tipo === 'salva' ? `base/${baseId}/${i}` : null;
