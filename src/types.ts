@@ -56,6 +56,8 @@ export interface Diff {
   verify?: boolean;
   /** Valore non deciso nella specifica: proposta di partenza. */
   tbd?: boolean;
+  /** Tipo di valore per le regole fisse e le proposte. */
+  campo?: 'iso' | 'isoMax' | 'tempo' | 'diaframma' | 'wb' | 'steadyShot' | 'afIlluminator' | 'subjectRecog';
 }
 
 export interface Regola {
@@ -90,6 +92,8 @@ export interface Situazione {
   note: string[];
   avvisi: string[];
   zebre: Zebre | null;
+  /** Come la lettura della luce propone i valori. */
+  strategia?: { modo: 'isoFisso' | 'isoAuto'; diaframmaPreferito?: number; isoTarget?: number; diaframmaTuttaApertura?: boolean };
   /** Ghiera di compensazione: attiva solo con ISO AUTO. */
   compensazione: { attiva: boolean; nota: string };
 }
@@ -119,6 +123,9 @@ export interface SituazioniFile {
 export interface Obiettivo {
   id: string;
   nome: string;
+  /** Diaframma più aperto (F); null = non noto. */
+  diaframmaMax: number | null;
+  diaframmaMaxVerify?: boolean;
   controlli: { id: string; verify?: boolean; opzioni?: string[] }[];
 }
 export interface ObiettiviFile { controlli: Record<string, string>; obiettivi: Obiettivo[] }

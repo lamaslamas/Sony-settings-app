@@ -15,6 +15,8 @@ export interface Evento {
   modalitaZebre: ModalitaZebre | null;
   /** Ultima situazione aperta (per “riprendi”). */
   ultimaSituazione: string | null;
+  /** Scelte che influenzano le proposte (filtro ND, soggetto, luci artificiali). */
+  scelte?: { nd?: boolean; soggetto?: 'fermo' | 'volo' | 'corsa'; luciArtificiali?: boolean };
   /** Passo del wizard raggiunto, per situazione (così si riprende da dove si era). */
   passi?: Record<string, number>;
   /** Ultima lettura della foto di prova. */
