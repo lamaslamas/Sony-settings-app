@@ -11,12 +11,11 @@ export function EntryRow({ e, hideTab }: { e: BaseEntry; hideTab?: boolean }) {
   return (
     <div class="entry stack">
       {tab && !hideTab && <div><TabBadge tab={tab} /></div>}
-      <div>
-        <span class="name">{e.sub ? `${e.item} › ${e.sub}` : e.item}</span>
-        {' → '}
-        <span class="value">{e.value}</span>{' '}
-        {(e.verify || !known) && <VerifyBadge />}
+      <div class="cam-riga voce">
+        <span class="cam-nome">{e.sub ? `${e.item} › ${e.sub}` : e.item}</span>
+        <span class="cam-valore">{e.value}</span>
       </div>
+      {(e.verify || !known) && <div><VerifyBadge /></div>}
       {e.note && <div class="small dim">{e.note}</div>}
       <MenuPath r={e} />
     </div>

@@ -13,37 +13,126 @@
       "id": "sigma-24-70",
       "nome": "Sigma 24-70mm F2.8",
       "controlli": [
-        { "id": "aperture_ring", "verify": true },
-        { "id": "click_switch", "verify": true },
-        { "id": "af_mf", "verify": true }
+        {
+          "id": "aperture_ring",
+          "verify": true
+        },
+        {
+          "id": "click_switch",
+          "verify": true
+        },
+        {
+          "id": "af_mf",
+          "verify": true
+        }
       ]
     },
     {
       "id": "sony-70-200",
       "nome": "Sony 70-200mm",
       "controlli": [
-        { "id": "af_mf", "verify": true },
-        { "id": "focus_limiter", "verify": true },
-        { "id": "oss", "verify": true },
-        { "id": "oss_mode", "verify": true, "opzioni": ["Mode 1", "Mode 2", "Mode 3"] }
+        {
+          "id": "af_mf",
+          "verify": true
+        },
+        {
+          "id": "focus_limiter",
+          "verify": true
+        },
+        {
+          "id": "oss",
+          "verify": true
+        },
+        {
+          "id": "oss_mode",
+          "verify": true,
+          "opzioni": [
+            "Mode 1",
+            "Mode 2",
+            "Mode 3"
+          ]
+        }
       ]
     },
     {
       "id": "sony-50-f12",
       "nome": "Sony 50mm F1.2",
       "controlli": [
-        { "id": "aperture_ring", "verify": true },
-        { "id": "click_switch", "verify": true },
-        { "id": "af_mf", "verify": true }
+        {
+          "id": "aperture_ring",
+          "verify": true
+        },
+        {
+          "id": "click_switch",
+          "verify": true
+        },
+        {
+          "id": "af_mf",
+          "verify": true
+        }
       ]
     },
     {
       "id": "sony-40-f25",
       "nome": "40mm F2.5",
       "controlli": [
-        { "id": "aperture_ring", "verify": true },
-        { "id": "click_switch", "verify": true },
-        { "id": "af_mf", "verify": true }
+        {
+          "id": "aperture_ring",
+          "verify": true
+        },
+        {
+          "id": "click_switch",
+          "verify": true
+        },
+        {
+          "id": "af_mf",
+          "verify": true
+        }
+      ]
+    },
+    {
+      "id": "sony-20-f18g",
+      "nome": "Sony 20mm F1.8 G",
+      "controlli": [
+        {
+          "id": "aperture_ring",
+          "verify": true
+        },
+        {
+          "id": "click_switch",
+          "verify": true
+        },
+        {
+          "id": "af_mf",
+          "verify": true
+        }
+      ]
+    },
+    {
+      "id": "sony-200-600g",
+      "nome": "Sony 200-600mm G",
+      "controlli": [
+        {
+          "id": "af_mf",
+          "verify": true
+        },
+        {
+          "id": "focus_limiter",
+          "verify": true
+        },
+        {
+          "id": "oss",
+          "verify": true
+        },
+        {
+          "id": "oss_mode",
+          "verify": true,
+          "opzioni": [
+            "Mode 1",
+            "Mode 2",
+            "Mode 3"
+          ]
+        }
       ]
     }
   ]

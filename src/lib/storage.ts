@@ -15,6 +15,8 @@ export interface Evento {
   modalitaZebre: ModalitaZebre | null;
   /** Ultima situazione aperta (per “riprendi”). */
   ultimaSituazione: string | null;
+  /** Passo del wizard raggiunto, per situazione (così si riprende da dove si era). */
+  passi?: Record<string, number>;
   /** Ultima lettura della foto di prova. */
   lettura?: LetturaLuce | null;
   /** Caselle spuntate: chiave → true. */
@@ -101,6 +103,10 @@ export function impostaValore(s: Stato, chiave: string, valore: string | undefin
     if (valore === undefined || valore.trim() === '') delete valori[chiave]; else valori[chiave] = valore.trim();
     return { ...e, valori };
   });
+}
+
+export function impostaPasso(s: Stato, situazioneId: string, passo: number): Stato {
+  return aggiornaEvento(s, (e) => ({ ...e, passi: { ...(e.passi ?? {}), [situazioneId]: Math.max(0, passo) } }));
 }
 
 export const contaSpunte = (e: Evento, prefisso: string): number =>

@@ -18,14 +18,37 @@
 
   /* Colore di ogni scheda del menu (configurabile). Mai da solo: sempre con icona + nome. */
   --tab-main: #5b5f6a;
-  --tab-shooting: #b45309;
-  --tab-exposure: #0f766e;
-  --tab-focus: #1d4ed8;
-  --tab-playback: #7e3fd0;
-  --tab-network: #be185d;
-  --tab-setup: #4d7c0f;
-  --tab-mymenu: #a16207;
+  --tab-shooting: #b3141f;
+  --tab-exposure: #b8167f;
+  --tab-focus: #8a22b3;
+  --tab-playback: #0b5cc4;
+  --tab-network: #1f7a2a;
+  --tab-setup: #7d6c0a;
+  --tab-mymenu: #5b5f6a;
   --on-tab: #ffffff;
+
+  /* Schermo del menu della camera (riproduzione). Colori misurati su uno screenshot dello schermo reale:
+     sfondo nero, lista a sinistra #101010, pannello destro #212121, riga selezionata #b12408,
+     Exposure/Color attivo #cf1d99. Le altre schede attive sono ricavate dalle tinte spente (da affinare). */
+  --cam-bg: #000000;
+  --cam-list: #101010;
+  --cam-panel: #212121;
+  --cam-line: #2c2c2c;
+  --cam-text: #ffffff;
+  --cam-dim: #9a9a9a;
+  --cam-sel: #b12408;
+  --cam-sel-text: #ffffff;
+  --cam-value: #ffffff;
+
+  /* Schede della camera: colore attivo e tinta spenta (non selezionata) */
+  --cam-tab-mymenu: #6b6b6b;    --cam-tab-mymenu-dim: #212121;
+  --cam-tab-main: #6b6b6b;      --cam-tab-main-dim: #212121;
+  --cam-tab-shooting: #c31b27;  --cam-tab-shooting-dim: #41090d;
+  --cam-tab-exposure: #cf1d99;  --cam-tab-exposure-dim: #450a33;
+  --cam-tab-focus: #9527bf;     --cam-tab-focus-dim: #2f0741;
+  --cam-tab-playback: #0366cd;  --cam-tab-playback-dim: #012040;
+  --cam-tab-network: #2aae2a;   --cam-tab-network-dim: #0e3a0e;
+  --cam-tab-setup: #9c8b1f;     --cam-tab-setup-dim: #2f1e04;
 
   /* Dimensioni: testo minimo 16 px, aree tattili minime 48 px */
   --font-base: 18px;

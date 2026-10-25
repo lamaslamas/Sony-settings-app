@@ -53,3 +53,10 @@ Generato dai dati (`verify: true`). Stessa lista nell’app: Menu › “Voci da
 - [ ] **40mm F2.5 › Ghiera diaframma** — _Obiettivi_
 - [ ] **40mm F2.5 › Click on/off (ghiera diaframma)** — _Obiettivi_
 - [ ] **40mm F2.5 › AF/MF** — _Obiettivi_
+- [ ] **Sony 20mm F1.8 G › Ghiera diaframma** — _Obiettivi_
+- [ ] **Sony 20mm F1.8 G › Click on/off (ghiera diaframma)** — _Obiettivi_
+- [ ] **Sony 20mm F1.8 G › AF/MF** — _Obiettivi_
+- [ ] **Sony 200-600mm G › AF/MF** — _Obiettivi_
+- [ ] **Sony 200-600mm G › Limitatore di messa a fuoco** — _Obiettivi_
+- [ ] **Sony 200-600mm G › OSS (stabilizzatore)** — _Obiettivi_
+- [ ] **Sony 200-600mm G › Modi OSS** — _Obiettivi_

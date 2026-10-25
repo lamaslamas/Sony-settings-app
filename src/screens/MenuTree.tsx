@@ -1,32 +1,29 @@
 import { useState } from 'preact/hooks';
 import { menu } from '../lib/data';
 import { href } from '../router';
+import { ColonnaSchede, coloriScheda, spezza } from '../components/CameraMenu';
 import { TabBadge } from '../components/TabBadge';
 import { VerifyBadge } from '../components/Badges';
 import type { MenuItem, MenuTab } from '../types';
 
-function ItemLine({ item, indent }: { item: MenuItem; indent?: boolean }) {
-  return (
-    <div class="entry" style={indent ? { paddingLeft: 32 } : undefined}>
-      <span class="name">{item.name}</span> {item.verify && <VerifyBadge />}
-      {item.options && <div class="small dim">{item.options.join(' · ')}</div>}
-      {item.note && <div class="small dim">{item.note}</div>}
-      {item.subItems?.map((s) => <ItemLine item={s} indent key={s.name} />)}
-    </div>
-  );
-}
-
-/** Albero del menu firmware 4.00, con ricerca per nome voce. */
+/** Menu della camera consultabile: schede a sinistra, gruppi numerati, voci. Con ricerca per nome. */
 export function MenuTree() {
   const [q, setQ] = useState('');
+  const [tabId, setTabId] = useState('shooting');
+  const [gruppo, setGruppo] = useState(0);
+  const [aperta, setAperta] = useState<string | null>(null);
+  const tab = menu.tabs.find((t) => t.id === tabId)!;
+  const g = tab.groups[Math.min(gruppo, tab.groups.length - 1)];
+
   const needle = q.trim().toLowerCase();
   const hits: { tab: MenuTab; group: string; item: MenuItem; sub?: string }[] = [];
   if (needle) {
-    for (const tab of menu.tabs) for (const g of tab.groups) for (const item of g.items) {
-      if (item.name.toLowerCase().includes(needle)) hits.push({ tab, group: g.name, item });
-      for (const s of item.subItems ?? []) if (s.name.toLowerCase().includes(needle)) hits.push({ tab, group: g.name, item, sub: s.name });
+    for (const t of menu.tabs) for (const gr of t.groups) for (const item of gr.items) {
+      if (item.name.toLowerCase().includes(needle)) hits.push({ tab: t, group: gr.name, item });
+      for (const s of item.subItems ?? []) if (s.name.toLowerCase().includes(needle)) hits.push({ tab: t, group: gr.name, item, sub: s.name });
     }
   }
+
   return (
     <div class="page stack">
       <h1>Menu · firmware {menu.firmware}</h1>
@@ -37,28 +34,51 @@ export function MenuTree() {
         <div class="card" style={{ padding: 0 }}>
           {hits.length === 0 && <div class="entry">Nessuna voce trovata.</div>}
           {hits.map((h) => (
-            <div class="entry stack" key={`${h.tab.id}${h.group}${h.item.name}${h.sub}`}>
+            <button key={`${h.tab.id}${h.group}${h.item.name}${h.sub}`} class="entry stack" style={{ width: '100%', textAlign: 'left', background: 'none', border: 0, color: 'inherit', font: 'inherit', cursor: 'pointer' }}
+              onClick={() => { setQ(''); setTabId(h.tab.id); setGruppo(h.tab.groups.findIndex((x) => x.name === h.group)); setAperta(h.item.name); }}>
               <div><TabBadge tab={h.tab} /></div>
               <div class="name">{h.sub ? `${h.item.name} › ${h.sub}` : h.item.name}</div>
               <div class="path">MENU › {h.tab.name} › {h.group} › {h.item.name}{h.sub ? ` › ${h.sub}` : ''}</div>
-              {h.item.options && !h.sub && <div class="small dim">{h.item.options.join(' · ')}</div>}
-            </div>
+            </button>
           ))}
         </div>
       ) : (
-        menu.tabs.map((tab) => (
-          <details class="tree" key={tab.id}>
-            <summary><TabBadge tab={tab} /></summary>
-            <div class="inner stack">
-              {tab.groups.map((g) => (
-                <details class="tree" key={g.name}>
-                  <summary><b>{g.name}</b></summary>
-                  <div class="inner">{g.items.map((i) => <ItemLine item={i} key={i.name} />)}</div>
-                </details>
+        <>
+          <div><TabBadge tab={tab} /></div>
+          <div class="camwrap">
+          <div class="cam-testa"><span>{tab.name}</span></div>
+          <div class="cam" style={coloriScheda(tab)}>
+            <ColonnaSchede attiva={tabId} alta onScegli={(id) => { setTabId(id); setGruppo(0); setAperta(null); }} />
+            <div class="cam-gruppi cam-scroll">
+              {tab.groups.map((gr, i) => (
+                <button key={gr.name} class={`cam-riga${i === gruppo ? ' sel' : ''}`} style={{ justifyContent: 'flex-start' }} onClick={() => { setGruppo(i); setAperta(null); }}>
+                  <span class="cam-num">{i + 1}</span><span class="cam-nome">{spezza(gr.name)}</span>
+                </button>
               ))}
             </div>
-          </details>
-        ))
+            <div class="cam-voci cam-scroll">
+              {g.items.map((it) => (
+                <div key={it.name}>
+                  <button class={`cam-riga${aperta === it.name ? ' sel' : ''}`} onClick={() => setAperta(aperta === it.name ? null : it.name)} aria-expanded={aperta === it.name}>
+                    <span class="cam-nome">{spezza(it.name)}</span>{it.verify && <span class="cam-valore">?</span>}
+                  </button>
+                  {aperta === it.name && (
+                    <div class="cam-dettaglio stack">
+                      {it.options && <div><span class="dim">Valori:</span> {it.options.join(' · ')}{it.open && ' · …'}</div>}
+                      {it.subItems?.map((s) => <div key={s.name}><b>{s.name}</b>{s.options && <span class="dim"> — {s.options.join(' · ')}</span>}</div>)}
+                      {it.note && <div class="dim">{it.note}</div>}
+                      {it.verify && <VerifyBadge />}
+                      {!it.options && !it.subItems && !it.note && <div class="dim">Valori non elencati in questa guida.</div>}
+                      <div class="path">MENU › {tab.name} › {g.name} › {it.name}</div>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+          <div class="cam-pie" aria-hidden="true"><span>◖ Page</span><span class="chiudi"><b>MENU</b>Close</span></div>
+          </div>
+        </>
       )}
       <p class="small dim">Fonte: {menu.source}</p>
     </div>
