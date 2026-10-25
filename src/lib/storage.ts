@@ -1,6 +1,8 @@
 // Stato salvato in locale (localStorage), per evento: così riprendo dove ero.
 // Le funzioni sono pure (prendono lo stato e ne restituiscono uno nuovo) e quindi facili da testare.
 
+import type { LetturaLuce } from './analisi';
+
 export type ModalitaZebre = 'isoAuto' | 'isoFisso';
 
 export interface Evento {
@@ -13,6 +15,8 @@ export interface Evento {
   modalitaZebre: ModalitaZebre | null;
   /** Ultima situazione aperta (per “riprendi”). */
   ultimaSituazione: string | null;
+  /** Ultima lettura della foto di prova. */
+  lettura?: LetturaLuce | null;
   /** Caselle spuntate: chiave → true. */
   spunte: Record<string, boolean>;
   /** Valori modificati a mano: chiave → valore. */
