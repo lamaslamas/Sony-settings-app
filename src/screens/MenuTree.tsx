@@ -1,7 +1,7 @@
 import { useState } from 'preact/hooks';
 import { menu } from '../lib/data';
 import { href } from '../router';
-import { ColonnaSchede, spezza } from '../components/CameraMenu';
+import { ColonnaSchede, coloriScheda, spezza } from '../components/CameraMenu';
 import { TabBadge } from '../components/TabBadge';
 import { VerifyBadge } from '../components/Badges';
 import type { MenuItem, MenuTab } from '../types';
@@ -45,7 +45,9 @@ export function MenuTree() {
       ) : (
         <>
           <div><TabBadge tab={tab} /></div>
-          <div class="cam">
+          <div class="camwrap">
+          <div class="cam-testa"><span>{tab.name}</span></div>
+          <div class="cam" style={coloriScheda(tab)}>
             <ColonnaSchede attiva={tabId} alta onScegli={(id) => { setTabId(id); setGruppo(0); setAperta(null); }} />
             <div class="cam-gruppi cam-scroll">
               {tab.groups.map((gr, i) => (
@@ -73,6 +75,8 @@ export function MenuTree() {
                 </div>
               ))}
             </div>
+          </div>
+          <div class="cam-pie" aria-hidden="true"><span>◖ Page</span><span class="chiudi"><b>MENU</b>Close</span></div>
           </div>
         </>
       )}

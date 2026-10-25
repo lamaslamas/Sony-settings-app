@@ -3,25 +3,29 @@ import { menu } from '../lib/data';
 import { Icon } from './Icon';
 
 /** Permette di andare a capo dopo la barra (es. “Shutter/Silent”) senza spezzare le parole. */
-export const spezza = (nome: string): string => nome.replace(/\//g, '/\u200b');
+export const spezza = (nome: string): string => nome.replace(/\//g, '/​');
 
 /** Ordine delle schede nella colonna di sinistra della camera: My Menu, Main, Shooting, … Setup. */
 export const ORDINE_SCHEDE = ['mymenu', 'main', 'shooting', 'exposure', 'focus', 'playback', 'network', 'setup'];
 export const schedeInOrdineCamera = (): MenuTab[] =>
   ORDINE_SCHEDE.map((id) => menu.tabs.find((t) => t.id === id)).filter((t): t is MenuTab => !!t);
 
-/** Colonna delle icone delle schede; la scheda attiva ha il suo colore. */
+/** Variabili CSS dei colori della camera per una scheda (attivo e spento). */
+export const coloriScheda = (tab: MenuTab) => {
+  const c = tab.colorToken.replace('--tab-', '--cam-tab-');
+  return { '--c': `var(${c})`, '--d': `var(${c}-dim)` } as never;
+};
+
+/** Colonna delle icone delle schede: scheda attiva col suo colore, le altre in tinta spenta. */
 export function ColonnaSchede({ attiva, onScegli, alta }: { attiva: string; onScegli?: (id: string) => void; alta?: boolean }) {
   return (
     <div class={`cam-tabs${alta ? ' alta' : ''}`}>
       {schedeInOrdineCamera().map((t) => {
         const on = t.id === attiva;
-        const stile = on ? ({ '--tab-color': `var(${t.colorToken})` } as never) : undefined;
-        const inner = <Icon name={t.icon} />;
         return onScegli ? (
-          <button key={t.id} class={`cam-tab${on ? ' on' : ''}`} style={stile} aria-label={t.name} aria-pressed={on} onClick={() => onScegli(t.id)}>{inner}</button>
+          <button key={t.id} class={`cam-tab${on ? ' on' : ''}`} style={coloriScheda(t)} aria-label={t.name} aria-pressed={on} onClick={() => onScegli(t.id)}><Icon name={t.icon} /></button>
         ) : (
-          <div key={t.id} class={`cam-tab${on ? ' on' : ''}`} style={stile} aria-hidden="true">{inner}</div>
+          <div key={t.id} class={`cam-tab${on ? ' on' : ''}`} style={coloriScheda(t)} aria-hidden="true"><Icon name={t.icon} /></div>
         );
       })}
     </div>
@@ -35,8 +39,8 @@ export function finestra<T>(lista: T[], i: number, n: number): { da: number; ele
 }
 
 /**
- * Riproduzione dello schermo del menu della camera: colonna delle schede, gruppi numerati, voci
- * con il valore a destra. Evidenzia dove andare e quale valore impostare.
+ * Riproduzione dello schermo del menu della camera al livello delle voci: titolo “Scheda > Gruppo”,
+ * colonna delle schede (colori reali), numeri dei gruppi, voci con la riga selezionata e il valore.
  */
 export function CameraMenu({ r, valore }: { r: MenuRef; valore: string }) {
   const tab = menu.tabs.find((t) => t.id === r.tab);
@@ -44,41 +48,44 @@ export function CameraMenu({ r, valore }: { r: MenuRef; valore: string }) {
   const gi = Math.max(0, tab.groups.findIndex((g) => g.name === r.group));
   const gruppo = tab.groups[gi];
   const ii = Math.max(0, gruppo.items.findIndex((i) => i.name === r.item));
-  const gruppi = finestra(tab.groups, gi, 5);
-  const voci = finestra(gruppo.items, ii, 5);
+  const gruppi = finestra(tab.groups, gi, 6);
+  const voci = finestra(gruppo.items, ii, 6);
   const voce = gruppo.items[ii];
   const sotto = r.sub ? voce.subItems ?? [] : [];
 
   return (
-    <div class="cam" role="img" aria-label={`Sulla camera: ${tab.name}, gruppo ${gi + 1} ${r.group}, voce ${r.sub ? `${r.item}, ${r.sub}` : r.item}, valore ${valore}`}>
-      <ColonnaSchede attiva={tab.id} />
-      <div class="cam-gruppi">
-        {gruppi.elementi.map((g, k) => (
-          <div key={g.name} class={`cam-riga${g.name === r.group ? ' sel' : ''}`}>
-            <span class="cam-num">{gruppi.da + k + 1}</span>
-            <span class="cam-nome">{spezza(g.name)}</span>
-          </div>
-        ))}
-      </div>
-      <div class="cam-voci">
-        {voci.elementi.map((v) => {
-          const sel = v.name === r.item;
-          return (
-            <div key={v.name}>
-              <div class={`cam-riga${sel && !r.sub ? ' sel' : ''}`}>
-                <span class="cam-nome">{spezza(v.name)}</span>
-                {sel && !r.sub && <span class="cam-valore">{valore}</span>}
-              </div>
-              {sel && r.sub && sotto.map((s) => (
-                <div key={s.name} class={`cam-riga sotto${s.name === r.sub ? ' sel' : ''}`}>
-                  <span class="cam-nome">{spezza(s.name)}</span>
-                  {s.name === r.sub && <span class="cam-valore">{valore}</span>}
-                </div>
-              ))}
+    <div class="camwrap" role="img" aria-label={`Sulla camera: ${tab.name}, gruppo ${gi + 1} ${r.group}, voce ${r.sub ? `${r.item}, ${r.sub}` : r.item}, valore ${valore}`}>
+      <div class="cam-testa"><span>{tab.name} › {r.group}</span></div>
+      <div class="cam voce" style={coloriScheda(tab)}>
+        <ColonnaSchede attiva={tab.id} />
+        <div class="cam-gruppi">
+          {gruppi.elementi.map((g, k) => (
+            <div key={g.name} class="cam-riga" style={{ justifyContent: 'center', padding: '4px 0' }}>
+              <span class={`cam-num${g.name === r.group ? '' : ' spento'}`}>{gruppi.da + k + 1}</span>
             </div>
-          );
-        })}
+          ))}
+        </div>
+        <div class="cam-voci">
+          {voci.elementi.map((v) => {
+            const sel = v.name === r.item;
+            return (
+              <div key={v.name}>
+                <div class={`cam-riga${sel && !r.sub ? ' sel' : ''}`}>
+                  <span class="cam-nome">{spezza(v.name)}</span>
+                  {sel && !r.sub && <span class="cam-valore">{valore}</span>}
+                </div>
+                {sel && r.sub && sotto.map((s) => (
+                  <div key={s.name} class={`cam-riga sotto${s.name === r.sub ? ' sel' : ''}`}>
+                    <span class="cam-nome">{spezza(s.name)}</span>
+                    {s.name === r.sub && <span class="cam-valore">{valore}</span>}
+                  </div>
+                ))}
+              </div>
+            );
+          })}
+        </div>
       </div>
+      <div class="cam-pie" aria-hidden="true"><span>◖ Page</span><span class="chiudi"><b>MENU</b>Close</span></div>
     </div>
   );
 }
