@@ -1,0 +1,240 @@
+{
+  "concetti": [
+    {
+      "id": "carica",
+      "titolo": "La ghiera carica, non salva",
+      "testo": "Girare la ghiera dei modi carica una posizione. Non salva mai niente. Si salva solo con Camera Set. Memory."
+    },
+    {
+      "id": "modifiche-perse",
+      "titolo": "Le modifiche a mano si perdono",
+      "testo": "Se cambi qualcosa su una posizione e poi giri la ghiera e torni, la modifica sparisce. Per tenerla devi risalvarla su quella posizione con Camera Set. Memory."
+    },
+    {
+      "id": "scheda-camera",
+      "titolo": "Camera o scheda: scegli il numero",
+      "evidenzia": true,
+      "testo": "In Camera Set. Memory scegli direttamente dove salvare: 1, 2, 3 salvano nella camera (una serie per ciascuna posizione dello Still/Movie/S&Q dial), M1–M4 salvano sulla scheda di memoria. Lo slot della scheda usato per M1–M4 si sceglie con Memory/Recall Media (Slot 1 o Slot 2): controllalo prima di salvare o richiamare M1/M2."
+    },
+    {
+      "id": "richiamo",
+      "titolo": "Come si richiama",
+      "evidenzia": false,
+      "testo": "Per 1, 2, 3 basta girare la ghiera dei modi su quella posizione. Per M1–M4 imposta la ghiera su 1/2/3 (posizione Recall Camera Setting) e scegli il numero in MENU › Shooting › Shooting Mode › Recall Camera Setting. Imposta prima Still/Movie/S&Q, poi richiama: se regoli dopo il richiamo vale quello che hai regolato."
+    }
+  ],
+  "passi": [
+    {
+      "id": "A",
+      "titolo": "Passo A · A casa, una volta sola",
+      "passi": [
+        {
+          "testo": "Controlla lo slot della scheda con le basi.",
+          "menu": {
+            "tab": "shooting",
+            "group": "Shooting Mode",
+            "item": "Memory/Recall Media"
+          },
+          "valore": "Slot con la scheda delle basi"
+        },
+        {
+          "testo": "Metti Still/Movie/S&Q su Movie e la ghiera dei modi su M. Applica tutta la Base video.",
+          "link": "/basi/video"
+        },
+        {
+          "testo": "Salva la base video sulla scheda.",
+          "menu": {
+            "tab": "shooting",
+            "group": "Shooting Mode",
+            "item": "Camera Set. Memory"
+          },
+          "valore": "M1"
+        },
+        {
+          "testo": "Metti Still/Movie/S&Q su Still e la ghiera dei modi su A. Applica tutta la Base foto.",
+          "link": "/basi/foto"
+        },
+        {
+          "testo": "Salva la base foto sulla scheda.",
+          "menu": {
+            "tab": "shooting",
+            "group": "Shooting Mode",
+            "item": "Camera Set. Memory"
+          },
+          "valore": "M2"
+        },
+        {
+          "testo": "Fai il backup di tutte le impostazioni.",
+          "menu": {
+            "tab": "setup",
+            "group": "Reset/Save Settings",
+            "item": "Save/Load Settings"
+          },
+          "valore": "Save"
+        }
+      ]
+    },
+    {
+      "id": "B",
+      "titolo": "Passo B · All'inizio dell'evento",
+      "passi": [
+        {
+          "testo": "Controlla lo slot della scheda con le basi.",
+          "menu": {
+            "tab": "shooting",
+            "group": "Shooting Mode",
+            "item": "Memory/Recall Media"
+          },
+          "valore": "Slot con la scheda delle basi",
+          "avviso": "Se lo slot è sbagliato, M1/M2 non si trovano o si salvano sulla scheda sbagliata."
+        },
+        {
+          "testo": "Video: Still/Movie/S&Q su Movie, ghiera dei modi su 1. Richiama la base.",
+          "menu": {
+            "tab": "shooting",
+            "group": "Shooting Mode",
+            "item": "Recall Camera Setting"
+          },
+          "valore": "M1"
+        },
+        {
+          "testo": "Fai la foto di prova con le impostazioni fisse.",
+          "link": "/"
+        },
+        {
+          "testo": "Regola per la sala seguendo la checklist della situazione.",
+          "link": "/luce"
+        },
+        {
+          "testo": "Salva per l'evento nella camera.",
+          "menu": {
+            "tab": "shooting",
+            "group": "Shooting Mode",
+            "item": "Camera Set. Memory"
+          },
+          "valore": "1"
+        },
+        {
+          "testo": "Foto: Still/Movie/S&Q su Still, ghiera dei modi su 2. Richiama la base.",
+          "menu": {
+            "tab": "shooting",
+            "group": "Shooting Mode",
+            "item": "Recall Camera Setting"
+          },
+          "valore": "M2"
+        },
+        {
+          "testo": "Ritocca per la sala e salva nella camera.",
+          "menu": {
+            "tab": "shooting",
+            "group": "Shooting Mode",
+            "item": "Camera Set. Memory"
+          },
+          "valore": "2"
+        }
+      ]
+    },
+    {
+      "id": "C",
+      "titolo": "Passo C · Durante l'evento",
+      "passi": [
+        {
+          "testo": "Video: Still/Movie/S&Q su Movie e ghiera dei modi su 1."
+        },
+        {
+          "testo": "Foto: Still/Movie/S&Q su Still e ghiera dei modi su 2."
+        },
+        {
+          "testo": "Prima di ogni ripresa passa dalla Pre-ripresa.",
+          "link": "/pre-ripresa"
+        }
+      ]
+    }
+  ],
+  "preRipresa": {
+    "comune": [
+      {
+        "id": "compensazione",
+        "testo": "Ghiera di compensazione a 0",
+        "dettaglio": "In M funziona solo con ISO AUTO: con ISO fisso girarla non cambia niente (è il caso delle interviste: lì l'esposizione si regola con ISO e diaframma e si controlla con le zebre). Sulla A7R V la compensazione è sulla rear dial R (con tasto di blocco al centro, bianco visibile = sbloccata), da −5 a +5 EV.",
+        "verify": true,
+        "verifyNota": "Controlla com'è fatta la ghiera sul tuo corpo (con o senza numeri) e come vuoi chiamarla."
+      }
+    ],
+    "video": [
+      {
+        "id": "v-zebra",
+        "testo": "Zebre attive (Zebra Display On)",
+        "dettaglio": "Livello 70 per la pelle; 100+ per le alte luci bruciate (finestre, lampade). Niente zebre sul volto = sottoesposto; zebre su gran parte del volto = troppo."
+      },
+      {
+        "id": "v-fps-pp",
+        "testo": "25p e PP11 (S-Cinetone)"
+      },
+      {
+        "id": "v-wb",
+        "testo": "White Balance: Custom 1 o Kelvin fisso, mai Auto"
+      },
+      {
+        "id": "v-iso",
+        "testo": "ISO e diaframma controllati con le zebre (interviste: ISO fisso)"
+      },
+      {
+        "id": "v-rec",
+        "testo": "Scheda inserita e Recording Media corretto"
+      }
+    ],
+    "foto": [
+      {
+        "id": "f-zebra",
+        "testo": "Zebre per le alte luci se servono (wildlife, paesaggio, sfondi chiari)",
+        "dettaglio": "Zebra Display On con livello per le alte luci, ad esempio 100+ (da verificare). Le strisce indicano le zone che stanno per bruciarsi."
+      },
+      {
+        "id": "f-otturatore",
+        "testo": "Luci artificiali: Shutter Type Mechanical Shutter"
+      },
+      {
+        "id": "f-steady",
+        "testo": "SteadyShot On"
+      },
+      {
+        "id": "f-iso",
+        "testo": "ISO AUTO entro il limite della situazione"
+      },
+      {
+        "id": "f-rec",
+        "testo": "Scheda inserita e Recording Media corretto"
+      }
+    ]
+  },
+  "fotoDiProva": {
+    "titolo": "Impostazioni fisse per la foto di prova",
+    "voci": [
+      {
+        "label": "Mode dial",
+        "value": "M"
+      },
+      {
+        "label": "ISO",
+        "value": "800"
+      },
+      {
+        "label": "Shutter speed",
+        "value": "1/50"
+      },
+      {
+        "label": "Aperture",
+        "value": "F4"
+      },
+      {
+        "label": "White Balance",
+        "value": "5500K"
+      },
+      {
+        "label": "Creative Look",
+        "value": "ST"
+      }
+    ]
+  }
+}

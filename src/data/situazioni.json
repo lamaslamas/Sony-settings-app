@@ -1,0 +1,1122 @@
+{
+  "nota": "Ogni situazione elenca solo le DIFFERENZE rispetto alla base (video → M1, foto → M2). source: menu = voce del menu (ref → menu-fw400.json), dial = ghiera/comando sul corpo, lens = comando dell'obiettivo (controlli in obiettivi.json). dynamic = valore da proporre dalla foto di prova (fase 3); example è solo un esempio. tbd = valore non deciso nella specifica, proposto come punto di partenza.",
+  "regole": [
+    {
+      "id": "int-tempo",
+      "tags": [
+        "intervista"
+      ],
+      "campo": "shutterDenominator",
+      "op": "oneOf",
+      "valori": [
+        50,
+        100
+      ],
+      "messaggio": "Interviste: solo 1/50 o 1/100 (luci a 50 Hz: altri tempi causano sfarfallio)."
+    },
+    {
+      "id": "int-iso-auto",
+      "tags": [
+        "intervista"
+      ],
+      "campo": "isoAuto",
+      "op": "equals",
+      "valore": false,
+      "messaggio": "Interviste: mai ISO AUTO, l'esposizione non deve cambiare durante la ripresa né tra un'intervista e l'altra."
+    },
+    {
+      "id": "int-wb",
+      "tags": [
+        "intervista"
+      ],
+      "campo": "whiteBalance",
+      "op": "notEquals",
+      "valore": "Auto",
+      "messaggio": "Interviste: White Balance sempre Custom 1 o Kelvin fissi, mai Auto."
+    },
+    {
+      "id": "int-steadyshot",
+      "tags": [
+        "intervista"
+      ],
+      "campo": "steadyShot",
+      "op": "equals",
+      "valore": "Off",
+      "messaggio": "Interviste: SteadyShot Off (sempre su cavalletto)."
+    },
+    {
+      "id": "int-piano-b-nd",
+      "tags": [
+        "intervista"
+      ],
+      "quando": {
+        "senzaND": true,
+        "troppaLuce": true
+      },
+      "imponi": {
+        "shutterDenominator": 100,
+        "apertura": "piuChiusa"
+      },
+      "messaggio": "Senza ND e con troppa luce l'unico piano B ammesso è 1/100 con diaframma più chiuso."
+    },
+    {
+      "id": "video-fps",
+      "tags": [
+        "video"
+      ],
+      "campo": "frameRate",
+      "op": "equals",
+      "valore": "25p",
+      "messaggio": "Video: frequenza sempre 25p."
+    },
+    {
+      "id": "video-pp",
+      "tags": [
+        "video"
+      ],
+      "campo": "pictureProfile",
+      "op": "equals",
+      "valore": "PP11 (S-Cinetone)",
+      "messaggio": "Video: Picture Profile sempre PP11 (S-Cinetone)."
+    },
+    {
+      "id": "video-wb",
+      "tags": [
+        "video"
+      ],
+      "campo": "whiteBalance",
+      "op": "notEquals",
+      "valore": "Auto",
+      "messaggio": "Video: White Balance mai Auto."
+    },
+    {
+      "id": "broll-tempo",
+      "tags": [
+        "broll"
+      ],
+      "campo": "shutterDenominator",
+      "op": "oneOf",
+      "valori": [
+        50,
+        100
+      ],
+      "messaggio": "B-roll: tempo sempre 1/50 o 1/100."
+    },
+    {
+      "id": "broll-iso-auto",
+      "tags": [
+        "broll"
+      ],
+      "campo": "isoAuto",
+      "op": "allowed",
+      "valore": true,
+      "messaggio": "B-roll: ISO AUTO consentito; tempo e diaframma fissi, correzione con la compensazione guardando le zebre."
+    },
+    {
+      "id": "broll-steadyshot",
+      "tags": [
+        "broll"
+      ],
+      "campo": "steadyShot",
+      "op": "equals",
+      "valore": "On",
+      "messaggio": "B-roll a mano libera: SteadyShot On."
+    },
+    {
+      "id": "foto-iso-max",
+      "tags": [
+        "foto"
+      ],
+      "campo": "isoAutoMax",
+      "op": "max",
+      "valore": 12800,
+      "messaggio": "Foto: ISO AUTO mai oltre il limite della base (12800)."
+    },
+    {
+      "id": "foto-steadyshot",
+      "tags": [
+        "foto"
+      ],
+      "campo": "steadyShot",
+      "op": "equals",
+      "valore": "On",
+      "messaggio": "Foto: SteadyShot sempre On (sempre a mano libera)."
+    },
+    {
+      "id": "foto-otturatore",
+      "tags": [
+        "foto"
+      ],
+      "quando": {
+        "luciArtificiali": true
+      },
+      "campo": "shutterType",
+      "op": "equals",
+      "valore": "Mechanical Shutter",
+      "messaggio": "Foto sotto luci artificiali: Shutter Type Mechanical Shutter."
+    },
+    {
+      "id": "wild-tempo",
+      "tags": [
+        "wildlife"
+      ],
+      "campo": "shutterDenominator",
+      "op": "min",
+      "valore": 1000,
+      "messaggio": "Wildlife: tempo mai sotto 1/1000."
+    },
+    {
+      "id": "wild-tempo-volo",
+      "tags": [
+        "wildlife"
+      ],
+      "quando": {
+        "soggetto": [
+          "volo",
+          "corsa"
+        ]
+      },
+      "campo": "shutterDenominator",
+      "op": "min",
+      "valore": 2000,
+      "messaggio": "Wildlife con soggetto in volo o in corsa: almeno 1/2000."
+    },
+    {
+      "id": "wild-iso-max",
+      "tags": [
+        "wildlife"
+      ],
+      "campo": "isoAutoMax",
+      "op": "max",
+      "valore": 6400,
+      "messaggio": "Wildlife: ISO AUTO con massimo 6400."
+    },
+    {
+      "id": "wild-af-illuminator",
+      "tags": [
+        "wildlife"
+      ],
+      "campo": "afIlluminator",
+      "op": "equals",
+      "valore": "Off",
+      "messaggio": "Wildlife: AF Illuminator sempre Off."
+    },
+    {
+      "id": "paes-diaframma",
+      "tags": [
+        "paesaggio"
+      ],
+      "campo": "apertureF",
+      "op": "between",
+      "valori": [
+        5.6,
+        8
+      ],
+      "messaggio": "Paesaggio: diaframma tra F5.6 e F8."
+    },
+    {
+      "id": "paes-recog",
+      "tags": [
+        "paesaggio"
+      ],
+      "campo": "subjectRecogInAF",
+      "op": "equals",
+      "valore": "Off",
+      "messaggio": "Paesaggio: Subject Recog in AF Off."
+    },
+    {
+      "id": "tutte-solo-menu",
+      "tags": [
+        "*"
+      ],
+      "op": "soloVociDelMenu",
+      "messaggio": "Si propongono solo voci e valori presenti in menu-fw400.json."
+    },
+    {
+      "id": "tutte-foto-illeggibile",
+      "tags": [
+        "*"
+      ],
+      "op": "fotoDiProvaIllegibile",
+      "messaggio": "Foto di prova troppo scura, mossa o illeggibile: l'app non indovina, chiede di rifarla."
+    },
+    {
+      "id": "tutte-modificabili",
+      "tags": [
+        "*"
+      ],
+      "op": "valoriModificabili",
+      "messaggio": "Ogni valore proposto resta modificabile."
+    }
+  ],
+  "salvataggioEvento": {
+    "video": {
+      "titolo": "Salva per l'evento",
+      "slot": "1",
+      "passi": [
+        {
+          "testo": "Salva sulla ghiera 1 (nella camera)",
+          "menu": {
+            "tab": "shooting",
+            "group": "Shooting Mode",
+            "item": "Camera Set. Memory"
+          },
+          "valore": "1",
+          "note": "1–3 salvano nella camera: lo slot della scheda non c'entra. Ricorda di avere Still/Movie/S&Q su Movie."
+        }
+      ]
+    },
+    "foto": {
+      "titolo": "Salva per l'evento",
+      "slot": "2",
+      "passi": [
+        {
+          "testo": "Salva sulla ghiera 2 (nella camera)",
+          "menu": {
+            "tab": "shooting",
+            "group": "Shooting Mode",
+            "item": "Camera Set. Memory"
+          },
+          "valore": "2",
+          "note": "1–3 salvano nella camera: lo slot della scheda non c'entra. Ricorda di avere Still/Movie/S&Q su Still."
+        }
+      ]
+    }
+  },
+  "metodoZebre": {
+    "titolo": "Metodo zebre + compensazione",
+    "quando": "Scegli la modalità in base alla luce.",
+    "modalita": {
+      "isoAuto": {
+        "nome": "M + ISO AUTO",
+        "consigliata": "Consigliata con la luce che cambia di continuo.",
+        "intro": "Tempo e diaframma li scegli tu, gli ISO la fotocamera. La fotocamera cerca un'esposizione “media” e tende a schiarire lo sfondo scuro, bruciando le parti chiare del soggetto: si corregge con la compensazione.",
+        "passi": [
+          "Imposta tempo e diaframma come sempre e ISO su ISO AUTO, con limite massimo (Exposure/Color › Exposure › ISO Range Limit).",
+          "Inquadra il soggetto.",
+          "Se vedi le strisce sulla parte più chiara, gira la ghiera della compensazione verso il meno: −0,3, −0,7, −1…",
+          "Fermati appena le strisce spariscono.",
+          "Scatta o registra."
+        ],
+        "nota": "Con sfondo scuro di solito si finisce tra −1 e −2: è la sottoesposizione voluta, si recupera in Lightroom."
+      },
+      "isoFisso": {
+        "nome": "M con ISO fisso",
+        "consigliata": "Quando la luce è stabile e vuoi il controllo completo.",
+        "intro": "Gli ISO li scegli tu: la compensazione qui non ha effetto.",
+        "passi": [
+          "Imposta tempo, diaframma e ISO a mano.",
+          "Inquadra il soggetto.",
+          "Gira la ghiera di controllo sugli ISO finché le strisce spariscono dal soggetto.",
+          "Scatta o registra."
+        ],
+        "nota": "La ghiera di compensazione non cambia niente con ISO fisso."
+      }
+    },
+    "comeLeggereZebraVideo": [
+      "Zebra Level 70, per la pelle: zebre leggere sul volto ben esposto.",
+      "Niente zebre sul volto: probabilmente sottoesposto.",
+      "Zebre su gran parte del volto: troppo esposto.",
+      "Alternativa 100+: serve a controllare le alte luci bruciate (finestre, lampade)."
+    ]
+  },
+  "situazioni": [
+    {
+      "id": "intervista-chiuso",
+      "nome": "Intervista · chiuso",
+      "tipo": "video",
+      "base": "M1",
+      "tags": [
+        "video",
+        "intervista"
+      ],
+      "supporto": "cavalletto",
+      "diff": [
+        {
+          "id": "wb",
+          "source": "menu",
+          "ref": {
+            "tab": "exposure",
+            "group": "White Balance",
+            "item": "White Balance"
+          },
+          "value": "Custom 1",
+          "note": "Da misurare sul cartoncino grigio, in sala, con la luce definitiva."
+        },
+        {
+          "id": "iso",
+          "source": "menu",
+          "ref": {
+            "tab": "exposure",
+            "group": "Exposure",
+            "item": "ISO"
+          },
+          "value": "Manuale",
+          "dynamic": "iso",
+          "example": "3200",
+          "note": "ISO fisso, mai ISO AUTO."
+        },
+        {
+          "id": "aperture",
+          "source": "dial",
+          "label": "Aperture (F)",
+          "value": "Da foto di prova",
+          "dynamic": "aperture",
+          "example": "F2.8"
+        },
+        {
+          "id": "shutter",
+          "source": "dial",
+          "label": "Shutter speed",
+          "value": "1/50",
+          "dynamic": "shutter",
+          "alternatives": [
+            "1/100"
+          ],
+          "note": "1/100 come alternativa con luci artificiali."
+        },
+        {
+          "id": "audio",
+          "source": "menu",
+          "ref": {
+            "tab": "shooting",
+            "group": "Audio Recording",
+            "item": "Audio Rec Level"
+          },
+          "value": "Manuale, picchi ~−12 dB",
+          "verify": true,
+          "note": "In guida è un livello numerico (+/−)."
+        },
+        {
+          "id": "lens-af",
+          "source": "lens",
+          "control": "af_mf",
+          "value": "AF"
+        },
+        {
+          "id": "lens-oss",
+          "source": "lens",
+          "control": "oss",
+          "value": "Off"
+        }
+      ],
+      "note": [
+        "Registra il cartoncino grigio a inizio ripresa."
+      ],
+      "avvisi": [
+        "Neon / LED: possibile sfarfallio. Usa solo 1/50 o 1/100 e controlla il monitor."
+      ],
+      "zebre": {
+        "livello": "70",
+        "alternative": [
+          "100+"
+        ],
+        "metodo": false
+      },
+      "compensazione": {
+        "attiva": false,
+        "nota": "ISO fisso: girare la ghiera di compensazione non cambia niente. Regola ISO e diaframma e controlla con le zebre."
+      }
+    },
+    {
+      "id": "intervista-aperto",
+      "nome": "Intervista · aperto",
+      "tipo": "video",
+      "base": "M1",
+      "tags": [
+        "video",
+        "intervista"
+      ],
+      "supporto": "cavalletto",
+      "diff": [
+        {
+          "id": "wb",
+          "source": "menu",
+          "ref": {
+            "tab": "exposure",
+            "group": "White Balance",
+            "item": "White Balance"
+          },
+          "value": "Custom 1",
+          "alternatives": [
+            "Kelvin fisso"
+          ],
+          "note": "Misura sul cartoncino grigio con la luce del momento, oppure imposta Kelvin fissi. Mai Auto."
+        },
+        {
+          "id": "iso",
+          "source": "menu",
+          "ref": {
+            "tab": "exposure",
+            "group": "Exposure",
+            "item": "ISO"
+          },
+          "value": "Manuale",
+          "dynamic": "iso",
+          "note": "ISO fisso, mai ISO AUTO."
+        },
+        {
+          "id": "aperture",
+          "source": "dial",
+          "label": "Aperture (F)",
+          "value": "Da foto di prova",
+          "dynamic": "aperture"
+        },
+        {
+          "id": "shutter",
+          "source": "dial",
+          "label": "Shutter speed",
+          "value": "1/50",
+          "dynamic": "shutter",
+          "alternatives": [
+            "1/100"
+          ]
+        },
+        {
+          "id": "audio",
+          "source": "menu",
+          "ref": {
+            "tab": "shooting",
+            "group": "Audio Recording",
+            "item": "Audio Rec Level"
+          },
+          "value": "Manuale, picchi ~−12 dB",
+          "verify": true,
+          "note": "In guida è un livello numerico (+/−)."
+        },
+        {
+          "id": "lens-af",
+          "source": "lens",
+          "control": "af_mf",
+          "value": "AF"
+        },
+        {
+          "id": "lens-oss",
+          "source": "lens",
+          "control": "oss",
+          "value": "Off"
+        }
+      ],
+      "note": [
+        "Senza ND con troppa luce: piano B 1/100 e diaframma più chiuso, cerca l'ombra.",
+        "Con filtro ND variabile: tieni 1/50 e regola il filtro. L'ND è opzionale, è un'alternativa.",
+        "Registra il cartoncino grigio a inizio ripresa."
+      ],
+      "avvisi": [
+        "Luce che cambia (nuvole, sole): rimisura il bianco quando cambia."
+      ],
+      "zebre": {
+        "livello": "70",
+        "alternative": [
+          "100+"
+        ],
+        "metodo": false
+      },
+      "compensazione": {
+        "attiva": false,
+        "nota": "ISO fisso: girare la ghiera di compensazione non cambia niente. Regola ISO e diaframma e controlla con le zebre."
+      }
+    },
+    {
+      "id": "broll-chiuso",
+      "nome": "B-roll · chiuso",
+      "tipo": "video",
+      "base": "M1",
+      "tags": [
+        "video",
+        "broll"
+      ],
+      "supporto": "mano libera",
+      "diff": [
+        {
+          "id": "iso",
+          "source": "menu",
+          "ref": {
+            "tab": "exposure",
+            "group": "Exposure",
+            "item": "ISO"
+          },
+          "value": "ISO AUTO",
+          "alternatives": [
+            "ISO fisso"
+          ],
+          "note": "ISO AUTO è consentito per il B-roll (utile in movimento)."
+        },
+        {
+          "id": "aperture",
+          "source": "dial",
+          "label": "Aperture (F)",
+          "value": "Fisso",
+          "dynamic": "aperture"
+        },
+        {
+          "id": "shutter",
+          "source": "dial",
+          "label": "Shutter speed",
+          "value": "1/50",
+          "dynamic": "shutter",
+          "alternatives": [
+            "1/100"
+          ]
+        },
+        {
+          "id": "comp",
+          "source": "dial",
+          "label": "Ghiera di compensazione (rear dial R)",
+          "value": "0, poi correzione con le zebre",
+          "verify": true,
+          "note": "Con ISO AUTO la compensazione funziona; con ISO fisso non cambia niente."
+        },
+        {
+          "id": "steady",
+          "source": "menu",
+          "ref": {
+            "tab": "shooting",
+            "group": "Image Stabilization",
+            "item": "SteadyShot"
+          },
+          "value": "On",
+          "note": "La base M1 ha SteadyShot Off (cavalletto): a mano libera va On."
+        },
+        {
+          "id": "lens-af",
+          "source": "lens",
+          "control": "af_mf",
+          "value": "AF"
+        },
+        {
+          "id": "lens-oss",
+          "source": "lens",
+          "control": "oss",
+          "value": "On"
+        }
+      ],
+      "note": [
+        "Tempo e diaframma fissi; correggi con la compensazione guardando le zebre."
+      ],
+      "avvisi": [],
+      "zebre": {
+        "livello": "70",
+        "alternative": [
+          "100+"
+        ],
+        "metodo": true,
+        "modalitaDefault": "isoAuto"
+      },
+      "compensazione": {
+        "attiva": true,
+        "nota": "Con ISO AUTO la ghiera di compensazione funziona: tienila a 0 e correggi guardando le zebre/l'istogramma."
+      }
+    },
+    {
+      "id": "broll-aperto",
+      "nome": "B-roll · aperto",
+      "tipo": "video",
+      "base": "M1",
+      "tags": [
+        "video",
+        "broll"
+      ],
+      "supporto": "mano libera",
+      "diff": [
+        {
+          "id": "iso",
+          "source": "menu",
+          "ref": {
+            "tab": "exposure",
+            "group": "Exposure",
+            "item": "ISO"
+          },
+          "value": "ISO AUTO",
+          "alternatives": [
+            "ISO fisso"
+          ]
+        },
+        {
+          "id": "aperture",
+          "source": "dial",
+          "label": "Aperture (F)",
+          "value": "Fisso",
+          "dynamic": "aperture"
+        },
+        {
+          "id": "shutter",
+          "source": "dial",
+          "label": "Shutter speed",
+          "value": "1/50",
+          "dynamic": "shutter",
+          "alternatives": [
+            "1/100"
+          ]
+        },
+        {
+          "id": "comp",
+          "source": "dial",
+          "label": "Ghiera di compensazione (rear dial R)",
+          "value": "0, poi correzione con le zebre",
+          "verify": true
+        },
+        {
+          "id": "steady",
+          "source": "menu",
+          "ref": {
+            "tab": "shooting",
+            "group": "Image Stabilization",
+            "item": "SteadyShot"
+          },
+          "value": "On",
+          "note": "La base M1 ha SteadyShot Off (cavalletto): a mano libera va On."
+        },
+        {
+          "id": "lens-af",
+          "source": "lens",
+          "control": "af_mf",
+          "value": "AF"
+        },
+        {
+          "id": "lens-oss",
+          "source": "lens",
+          "control": "oss",
+          "value": "On"
+        }
+      ],
+      "note": [
+        "Senza ND con troppa luce: piano B 1/100 e diaframma più chiuso, cerca l'ombra.",
+        "Con filtro ND variabile: tieni 1/50 e regola il filtro (opzionale)."
+      ],
+      "avvisi": [],
+      "zebre": {
+        "livello": "70",
+        "alternative": [
+          "100+"
+        ],
+        "metodo": true,
+        "modalitaDefault": "isoAuto"
+      },
+      "compensazione": {
+        "attiva": true,
+        "nota": "Con ISO AUTO la ghiera di compensazione funziona: tienila a 0 e correggi guardando le zebre/l'istogramma."
+      }
+    },
+    {
+      "id": "conferenza",
+      "nome": "Conferenza con persone",
+      "tipo": "foto",
+      "base": "M2",
+      "tags": [
+        "foto",
+        "conferenza"
+      ],
+      "supporto": "mano libera",
+      "diff": [
+        {
+          "id": "mode",
+          "source": "dial",
+          "label": "Mode dial",
+          "value": "M"
+        },
+        {
+          "id": "iso",
+          "source": "menu",
+          "ref": {
+            "tab": "exposure",
+            "group": "Exposure",
+            "item": "ISO"
+          },
+          "value": "ISO AUTO",
+          "note": "Già nella base M2: in M serve ISO AUTO per usare la compensazione."
+        },
+        {
+          "id": "shutter",
+          "source": "dial",
+          "label": "Shutter speed",
+          "value": "1/200"
+        },
+        {
+          "id": "aperture",
+          "source": "dial",
+          "label": "Aperture (F)",
+          "value": "F2.8"
+        },
+        {
+          "id": "lens-oss",
+          "source": "lens",
+          "control": "oss",
+          "value": "On"
+        }
+      ],
+      "note": [
+        "Esposizione: M con ISO AUTO; correggi con la ghiera di compensazione."
+      ],
+      "avvisi": [
+        "Luci artificiali: Shutter Type Mechanical Shutter (già nella base M2)."
+      ],
+      "zebre": null,
+      "compensazione": {
+        "attiva": true,
+        "nota": "Con ISO AUTO la ghiera di compensazione funziona: tienila a 0 e correggi guardando le zebre/l'istogramma."
+      }
+    },
+    {
+      "id": "gruppo-aperto",
+      "nome": "Foto di gruppo · aperto",
+      "tipo": "foto",
+      "base": "M2",
+      "tags": [
+        "foto",
+        "gruppo"
+      ],
+      "supporto": "mano libera",
+      "diff": [
+        {
+          "id": "aperture",
+          "source": "dial",
+          "label": "Aperture (F)",
+          "value": "F5.6–F8",
+          "note": "Per avere tutti a fuoco."
+        },
+        {
+          "id": "lens-oss",
+          "source": "lens",
+          "control": "oss",
+          "value": "On"
+        }
+      ],
+      "note": [],
+      "avvisi": [],
+      "zebre": {
+        "livello": "100+",
+        "alternative": [],
+        "metodo": false,
+        "verify": true,
+        "nota": "Utile con sfondi chiari."
+      },
+      "compensazione": {
+        "attiva": true,
+        "nota": "Con ISO AUTO la ghiera di compensazione funziona: tienila a 0 e correggi guardando le zebre/l'istogramma."
+      }
+    },
+    {
+      "id": "gruppo-chiuso",
+      "nome": "Foto di gruppo · chiuso",
+      "tipo": "foto",
+      "base": "M2",
+      "tags": [
+        "foto",
+        "gruppo"
+      ],
+      "supporto": "mano libera",
+      "diff": [
+        {
+          "id": "mode",
+          "source": "dial",
+          "label": "Mode dial",
+          "value": "M"
+        },
+        {
+          "id": "iso",
+          "source": "menu",
+          "ref": {
+            "tab": "exposure",
+            "group": "Exposure",
+            "item": "ISO"
+          },
+          "value": "ISO AUTO",
+          "note": "Già nella base M2: in M serve ISO AUTO per usare la compensazione."
+        },
+        {
+          "id": "shutter",
+          "source": "dial",
+          "label": "Shutter speed",
+          "value": "1/125"
+        },
+        {
+          "id": "aperture",
+          "source": "dial",
+          "label": "Aperture (F)",
+          "value": "F4–F5.6",
+          "alternatives": [
+            "F5.6"
+          ],
+          "note": "F5.6 con più file."
+        },
+        {
+          "id": "lens-oss",
+          "source": "lens",
+          "control": "oss",
+          "value": "On"
+        }
+      ],
+      "note": [
+        "Esposizione: M con ISO AUTO; correggi con la ghiera di compensazione."
+      ],
+      "avvisi": [
+        "Luci artificiali: Shutter Type Mechanical Shutter (già nella base M2)."
+      ],
+      "zebre": null,
+      "compensazione": {
+        "attiva": true,
+        "nota": "Con ISO AUTO la ghiera di compensazione funziona: tienila a 0 e correggi guardando le zebre/l'istogramma."
+      }
+    },
+    {
+      "id": "wildlife",
+      "nome": "Wildlife · aperto",
+      "tipo": "foto",
+      "base": "M2",
+      "tags": [
+        "foto",
+        "wildlife"
+      ],
+      "supporto": "mano libera",
+      "diff": [
+        {
+          "id": "mode",
+          "source": "dial",
+          "label": "Mode dial",
+          "value": "M"
+        },
+        {
+          "id": "iso",
+          "source": "menu",
+          "ref": {
+            "tab": "exposure",
+            "group": "Exposure",
+            "item": "ISO"
+          },
+          "value": "ISO AUTO"
+        },
+        {
+          "id": "iso-max",
+          "source": "menu",
+          "ref": {
+            "tab": "exposure",
+            "group": "Exposure",
+            "item": "ISO Range Limit",
+            "sub": "Maximum"
+          },
+          "value": "6400"
+        },
+        {
+          "id": "shutter",
+          "source": "dial",
+          "label": "Shutter speed",
+          "value": "1/1000",
+          "alternatives": [
+            "1/2000",
+            "1/3200"
+          ],
+          "note": "In volo 1/2000–1/3200."
+        },
+        {
+          "id": "aperture",
+          "source": "dial",
+          "label": "Aperture (F)",
+          "value": "Tutta apertura"
+        },
+        {
+          "id": "zebra-on",
+          "source": "menu",
+          "ref": {
+            "tab": "exposure",
+            "group": "Zebra Display",
+            "item": "Zebra Display"
+          },
+          "value": "On"
+        },
+        {
+          "id": "zebra-level",
+          "source": "menu",
+          "ref": {
+            "tab": "exposure",
+            "group": "Zebra Display",
+            "item": "Zebra Level"
+          },
+          "value": "100+",
+          "verify": true,
+          "note": "Livello per le alte luci: valore da verificare."
+        },
+        {
+          "id": "drive",
+          "source": "menu",
+          "ref": {
+            "tab": "shooting",
+            "group": "Drive Mode",
+            "item": "Drive Mode"
+          },
+          "value": "Cont. Shooting: Hi",
+          "verify": true
+        },
+        {
+          "id": "focus-area",
+          "source": "menu",
+          "ref": {
+            "tab": "focus",
+            "group": "Focus Area",
+            "item": "Focus Area"
+          },
+          "value": "Tracking: Zone"
+        },
+        {
+          "id": "recog",
+          "source": "menu",
+          "ref": {
+            "tab": "focus",
+            "group": "Subject Recognition",
+            "item": "Recognition Target"
+          },
+          "value": "Animal/Bird"
+        },
+        {
+          "id": "af-illum",
+          "source": "menu",
+          "ref": {
+            "tab": "focus",
+            "group": "AF/MF",
+            "item": "AF Illuminator"
+          },
+          "value": "Off"
+        },
+        {
+          "id": "lens-limiter",
+          "source": "lens",
+          "control": "focus_limiter",
+          "value": "Lontano"
+        },
+        {
+          "id": "lens-oss",
+          "source": "lens",
+          "control": "oss",
+          "value": "On"
+        },
+        {
+          "id": "lens-oss-mode",
+          "source": "lens",
+          "control": "oss_mode",
+          "value": "Mode 2 per il volo (se presente)"
+        }
+      ],
+      "note": [
+        "Segui il metodo zebre + compensazione qui sotto."
+      ],
+      "avvisi": [],
+      "zebre": {
+        "livello": "100+",
+        "alternative": [],
+        "metodo": true,
+        "modalitaDefault": "isoAuto"
+      },
+      "compensazione": {
+        "attiva": true,
+        "nota": "Con ISO AUTO la ghiera di compensazione funziona: tienila a 0 e correggi guardando le zebre/l'istogramma."
+      }
+    },
+    {
+      "id": "paesaggio",
+      "nome": "Paesaggio",
+      "tipo": "foto",
+      "base": "M2",
+      "tags": [
+        "foto",
+        "paesaggio"
+      ],
+      "supporto": "mano libera",
+      "diff": [
+        {
+          "id": "aperture",
+          "source": "dial",
+          "label": "Aperture (F)",
+          "value": "F8",
+          "alternatives": [
+            "F5.6"
+          ],
+          "note": "F5.6 con poca luce."
+        },
+        {
+          "id": "focus-mode",
+          "source": "menu",
+          "ref": {
+            "tab": "focus",
+            "group": "AF/MF",
+            "item": "Focus Mode"
+          },
+          "value": "Single-shot AF"
+        },
+        {
+          "id": "focus-area",
+          "source": "menu",
+          "ref": {
+            "tab": "focus",
+            "group": "Focus Area",
+            "item": "Focus Area"
+          },
+          "value": "Spot: M"
+        },
+        {
+          "id": "recog",
+          "source": "menu",
+          "ref": {
+            "tab": "focus",
+            "group": "Subject Recognition",
+            "item": "Subject Recog in AF"
+          },
+          "value": "Off"
+        },
+        {
+          "id": "drive",
+          "source": "menu",
+          "ref": {
+            "tab": "shooting",
+            "group": "Drive Mode",
+            "item": "Drive Mode"
+          },
+          "value": "Single Shooting",
+          "alternatives": [
+            "Cont. Bracket"
+          ],
+          "note": "Cont. Bracket con forti contrasti."
+        },
+        {
+          "id": "zebra-on",
+          "source": "menu",
+          "ref": {
+            "tab": "exposure",
+            "group": "Zebra Display",
+            "item": "Zebra Display"
+          },
+          "value": "On",
+          "note": "Alte luci critiche."
+        },
+        {
+          "id": "zebra-level",
+          "source": "menu",
+          "ref": {
+            "tab": "exposure",
+            "group": "Zebra Display",
+            "item": "Zebra Level"
+          },
+          "value": "100+",
+          "verify": true
+        },
+        {
+          "id": "lens-oss",
+          "source": "lens",
+          "control": "oss",
+          "value": "On"
+        }
+      ],
+      "note": [],
+      "avvisi": [],
+      "zebre": {
+        "livello": "100+",
+        "alternative": [],
+        "metodo": false,
+        "verify": true
+      },
+      "compensazione": {
+        "attiva": true,
+        "nota": "Con ISO AUTO la ghiera di compensazione funziona: tienila a 0 e correggi guardando le zebre/l'istogramma."
+      }
+    }
+  ]
+}

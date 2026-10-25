@@ -1,0 +1,37 @@
+/* ==========================================================================
+   TOKEN DEL TEMA — tutti i colori e le dimensioni dell'app stanno qui.
+   Cambia questi valori per cambiare lo stile: nessun colore è scritto altrove.
+   Tema scuro neutro con un solo colore d'accento.
+   ========================================================================== */
+:root {
+  /* Sfondi e testo (alto contrasto) */
+  --bg: #111214;
+  --surface: #1b1d21;
+  --surface-2: #262930;
+  --border: #4a4f59;
+  --text: #f5f6f8;
+  --text-dim: #c3c7cf;
+
+  /* Unico colore d'accento */
+  --accent: #ffb020;
+  --on-accent: #1a1300;
+
+  /* Colore di ogni scheda del menu (configurabile). Mai da solo: sempre con icona + nome. */
+  --tab-main: #5b5f6a;
+  --tab-shooting: #b45309;
+  --tab-exposure: #0f766e;
+  --tab-focus: #1d4ed8;
+  --tab-playback: #7e3fd0;
+  --tab-network: #be185d;
+  --tab-setup: #4d7c0f;
+  --tab-mymenu: #a16207;
+  --on-tab: #ffffff;
+
+  /* Dimensioni: testo minimo 16 px, aree tattili minime 48 px */
+  --font-base: 18px;
+  --font-small: 16px;
+  --hit: 48px;
+  --radius: 12px;
+  --gap: 12px;
+  --gutter: 16px;
+}

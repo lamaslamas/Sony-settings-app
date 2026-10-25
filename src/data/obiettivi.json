@@ -1,0 +1,50 @@
+{
+  "nota": "Controlli fisici degli obiettivi. TUTTI da verificare uno per uno sull'obiettivo reale (verify:true): sono ipotesi iniziali, non dati confermati. La checklist mostra solo i controlli dell'obiettivo montato.",
+  "controlli": {
+    "aperture_ring": "Ghiera diaframma",
+    "click_switch": "Click on/off (ghiera diaframma)",
+    "af_mf": "AF/MF",
+    "focus_limiter": "Limitatore di messa a fuoco",
+    "oss": "OSS (stabilizzatore)",
+    "oss_mode": "Modi OSS"
+  },
+  "obiettivi": [
+    {
+      "id": "sigma-24-70",
+      "nome": "Sigma 24-70mm F2.8",
+      "controlli": [
+        { "id": "aperture_ring", "verify": true },
+        { "id": "click_switch", "verify": true },
+        { "id": "af_mf", "verify": true }
+      ]
+    },
+    {
+      "id": "sony-70-200",
+      "nome": "Sony 70-200mm",
+      "controlli": [
+        { "id": "af_mf", "verify": true },
+        { "id": "focus_limiter", "verify": true },
+        { "id": "oss", "verify": true },
+        { "id": "oss_mode", "verify": true, "opzioni": ["Mode 1", "Mode 2", "Mode 3"] }
+      ]
+    },
+    {
+      "id": "sony-50-f12",
+      "nome": "Sony 50mm F1.2",
+      "controlli": [
+        { "id": "aperture_ring", "verify": true },
+        { "id": "click_switch", "verify": true },
+        { "id": "af_mf", "verify": true }
+      ]
+    },
+    {
+      "id": "sony-40-f25",
+      "nome": "40mm F2.5",
+      "controlli": [
+        { "id": "aperture_ring", "verify": true },
+        { "id": "click_switch", "verify": true },
+        { "id": "af_mf", "verify": true }
+      ]
+    }
+  ]
+}

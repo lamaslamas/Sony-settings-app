@@ -1,0 +1,59 @@
+{
+  "id": "M1",
+  "titolo": "Base video · M1",
+  "descrizione": "Base per il video, salvata sulla scheda di memoria come M1. Non si modifica durante gli eventi.",
+  "dials": {
+    "stillMovieSq": "Movie",
+    "mode": "M"
+  },
+  "salvataggio": {
+    "dove": "Scheda di memoria (M1)",
+    "menu": { "tab": "shooting", "group": "Shooting Mode", "item": "Camera Set. Memory" },
+    "valore": "M1"
+  },
+  "entries": [
+    { "tab": "shooting", "group": "Image Quality/Rec", "item": "File Format", "value": "XAVC S 4K" },
+    { "tab": "shooting", "group": "Image Quality/Rec", "item": "Movie Settings", "sub": "Rec Frame Rate", "value": "25p" },
+    { "tab": "shooting", "group": "Image Quality/Rec", "item": "Movie Settings", "sub": "Record Setting", "value": "140M 4:2:2 10bit", "note": "Combinazione confermata dalla guida per XAVC S 4K a 25p." },
+    { "tab": "shooting", "group": "Image Quality/Rec", "item": "APS-C S35 (Super 35mm) Shooting", "value": "Off" },
+    { "tab": "shooting", "group": "Image Quality/Rec", "item": "Lens Compensation", "sub": "Shading Comp.", "value": "Auto", "verify": true, "note": "La specifica dice solo “Lens Compensation Auto”: applicato alle tre voci Shading / Chromatic Aberration / Distortion." },
+    { "tab": "shooting", "group": "Image Quality/Rec", "item": "Lens Compensation", "sub": "Chromatic Aberration Comp.", "value": "Auto", "verify": true },
+    { "tab": "shooting", "group": "Image Quality/Rec", "item": "Lens Compensation", "sub": "Distortion Comp.", "value": "Auto", "verify": true },
+    { "tab": "shooting", "group": "Media", "item": "Rec. Media Settings", "sub": "Recording Media (movie)", "value": "Simult. Recording", "verify": true, "note": "Nome esatto in guida: “Simult. Recording”. Valore scelto da verificare." },
+    { "tab": "shooting", "group": "Shooting Mode", "item": "Exposure Ctrl Type", "value": "P/A/S/M Mode" },
+    { "tab": "shooting", "group": "Shutter/Silent", "item": "Anti-flicker Set.", "sub": "Var. Shutter", "value": "Off", "note": "On solo con bande da LED." },
+    { "tab": "shooting", "group": "Audio Recording", "item": "Audio Recording", "value": "On" },
+    { "tab": "shooting", "group": "Audio Recording", "item": "Audio Rec Level", "value": "Manuale (livello numerico)", "verify": true, "note": "In guida Audio Rec Level è un livello numerico (+/−), non esiste un’opzione “Manual”. Regola il livello guardando i picchi." },
+    { "tab": "shooting", "group": "Audio Recording", "item": "Audio Out Timing", "value": "Live" },
+    { "tab": "shooting", "group": "Audio Recording", "item": "Wind Noise Reduct.", "value": "Off" },
+    { "tab": "shooting", "group": "TC/UB", "item": "Time Code Run", "value": "Rec Run" },
+    { "tab": "shooting", "group": "Image Stabilization", "item": "SteadyShot", "value": "Off", "note": "Cavalletto." },
+    { "tab": "shooting", "group": "Shooting Display", "item": "Grid Line Display", "value": "On" },
+    { "tab": "shooting", "group": "Shooting Display", "item": "Grid Line Type", "value": "Rule of 3rds Grid" },
+    { "tab": "shooting", "group": "Shooting Display", "item": "Emphasized REC Display", "value": "On", "verify": true },
+    { "tab": "exposure", "group": "Exposure", "item": "ISO", "value": "800", "note": "Valore di base." },
+    { "tab": "exposure", "group": "Exposure", "item": "Auto Slow Shutter", "value": "Off" },
+    { "tab": "exposure", "group": "Metering", "item": "Metering Mode", "value": "Multi" },
+    { "tab": "exposure", "group": "Metering", "item": "Face Priority in Multi Metering", "value": "On" },
+    { "tab": "exposure", "group": "White Balance", "item": "White Balance", "value": "Custom 1" },
+    { "tab": "exposure", "group": "Color/Tone", "item": "D-Range Optimizer", "value": "Off", "verify": true, "note": "La specifica lo chiama “Dynamic Range Opt.”; il nome in guida è “D-Range Optimizer”." },
+    { "tab": "exposure", "group": "Color/Tone", "item": "Picture Profile", "value": "PP11 (S-Cinetone)" },
+    { "tab": "exposure", "group": "Color/Tone", "item": "Soft Skin Effect", "value": "Off" },
+    { "tab": "exposure", "group": "Zebra Display", "item": "Zebra Display", "value": "On" },
+    { "tab": "exposure", "group": "Zebra Display", "item": "Zebra Level", "value": "70", "note": "Per la pelle. In alternativa 100+ per le alte luci." },
+    { "tab": "focus", "group": "AF/MF", "item": "Focus Mode", "value": "Continuous AF" },
+    { "tab": "focus", "group": "AF/MF", "item": "AF Transition Speed", "value": "3" },
+    { "tab": "focus", "group": "AF/MF", "item": "AF Subj. Shift Sensitivity", "value": "2" },
+    { "tab": "focus", "group": "AF/MF", "item": "AF Assist", "value": "On" },
+    { "tab": "focus", "group": "Focus Area", "item": "Focus Area", "value": "Wide" },
+    { "tab": "focus", "group": "Subject Recognition", "item": "Subject Recog in AF", "value": "On" },
+    { "tab": "focus", "group": "Subject Recognition", "item": "Recognition Target", "value": "Human" },
+    { "tab": "focus", "group": "Subject Recognition", "item": "Right/Left Eye Select", "value": "Auto" }
+  ],
+  "setup": [
+    { "tab": "setup", "group": "Operation Customize", "item": "Different Set for Still/Mv", "value": "Spunta Aperture, Shutter Speed, ISO, White Balance", "note": "Così foto e video ricordano valori separati." },
+    { "tab": "setup", "group": "Finder/Monitor", "item": "Monitor Brightness", "value": "Manual ±0" },
+    { "tab": "setup", "group": "Area/Date", "item": "NTSC/PAL Selector", "value": "PAL" },
+    { "tab": "setup", "group": "Power Setting Option", "item": "Auto Power OFF Temp.", "value": "High", "note": "Con “High” non tenere la camera in mano a lungo (rischio ustioni a bassa temperatura): usare cavalletto." }
+  ]
+}
