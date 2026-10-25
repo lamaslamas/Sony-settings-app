@@ -1,5 +1,5 @@
 {
-  "nota": "Controlli fisici degli obiettivi. TUTTI da verificare uno per uno sull'obiettivo reale (verify:true): sono ipotesi iniziali, non dati confermati. La checklist mostra solo i controlli dell'obiettivo montato.",
+  "nota": "Controlli fisici degli obiettivi. TUTTI da verificare uno per uno sull'obiettivo reale (verify:true): sono ipotesi iniziali, non dati confermati. La checklist mostra solo i controlli dell'obiettivo montato. diaframmaMax = diaframma più aperto (F), usato per le proposte; null = non noto (70-200: F2.8 o F4 a seconda del modello).",
   "controlli": {
     "aperture_ring": "Ghiera diaframma",
     "click_switch": "Click on/off (ghiera diaframma)",
@@ -25,7 +25,8 @@
           "id": "af_mf",
           "verify": true
         }
-      ]
+      ],
+      "diaframmaMax": 2.8
     },
     {
       "id": "sony-70-200",
@@ -52,7 +53,9 @@
             "Mode 3"
           ]
         }
-      ]
+      ],
+      "diaframmaMax": null,
+      "diaframmaMaxVerify": true
     },
     {
       "id": "sony-50-f12",
@@ -70,7 +73,8 @@
           "id": "af_mf",
           "verify": true
         }
-      ]
+      ],
+      "diaframmaMax": 1.2
     },
     {
       "id": "sony-40-f25",
@@ -88,7 +92,8 @@
           "id": "af_mf",
           "verify": true
         }
-      ]
+      ],
+      "diaframmaMax": 2.5
     },
     {
       "id": "sony-20-f18g",
@@ -106,7 +111,8 @@
           "id": "af_mf",
           "verify": true
         }
-      ]
+      ],
+      "diaframmaMax": 1.8
     },
     {
       "id": "sony-200-600g",
@@ -133,7 +139,8 @@
             "Mode 3"
           ]
         }
-      ]
+      ],
+      "diaframmaMax": 5.6
     }
   ]
 }

@@ -15,6 +15,8 @@ export interface Evento {
   modalitaZebre: ModalitaZebre | null;
   /** Ultima situazione aperta (per “riprendi”). */
   ultimaSituazione: string | null;
+  /** Scelte che influenzano le proposte (filtro ND, soggetto, luci artificiali). */
+  scelte?: { nd?: boolean; soggetto?: 'fermo' | 'volo' | 'corsa'; luciArtificiali?: boolean };
   /** Passo del wizard raggiunto, per situazione (così si riprende da dove si era). */
   passi?: Record<string, number>;
   /** Ultima lettura della foto di prova. */
@@ -29,9 +31,13 @@ export interface Stato {
   versione: 1;
   eventoId: string;
   eventi: Record<string, Evento>;
-  /** Spunte non legate a un evento (passo A della guida: si fa una volta sola). */
-  globali: { spunte: Record<string, boolean> };
+  /** Spunte non legate a un evento (passo A della guida e basi M1/M2: si fanno una volta sola). */
+  globali: { spunte: Record<string, boolean>; passi?: Record<string, number> };
+  /** Preferenze: come si presentano le impostazioni, un passo per volta (wizard) o tutta la lista. */
+  preferenze?: { vista?: Vista };
 }
+
+export type Vista = 'wizard' | 'lista';
 
 export const STORAGE_KEY = 'sony-a7rv:stato:v1';
 
@@ -84,7 +90,7 @@ export function impostaSpunta(s: Stato, chiave: string, valore: boolean, globale
     return out;
   };
   return globale
-    ? { ...s, globali: { spunte: set(s.globali.spunte) } }
+    ? { ...s, globali: { ...s.globali, spunte: set(s.globali.spunte) } }
     : aggiornaEvento(s, (e) => ({ ...e, spunte: set(e.spunte) }));
 }
 
@@ -103,6 +109,19 @@ export function impostaValore(s: Stato, chiave: string, valore: string | undefin
     if (valore === undefined || valore.trim() === '') delete valori[chiave]; else valori[chiave] = valore.trim();
     return { ...e, valori };
   });
+}
+
+/** Toglie le spunte globali che iniziano con il prefisso (es. ricominciare una base). */
+export function azzeraSpunteGlobali(s: Stato, prefisso: string): Stato {
+  return { ...s, globali: { ...s.globali, spunte: Object.fromEntries(Object.entries(s.globali.spunte).filter(([k]) => !k.startsWith(prefisso))) } };
+}
+
+export const vistaCorrente = (s: Stato): Vista => s.preferenze?.vista ?? 'wizard';
+export const impostaVista = (s: Stato, vista: Vista): Stato => ({ ...s, preferenze: { ...s.preferenze, vista } });
+
+/** Passo raggiunto nel wizard di una base (M1/M2): vale per tutti gli eventi. */
+export function impostaPassoBase(s: Stato, baseId: string, passo: number): Stato {
+  return { ...s, globali: { ...s.globali, passi: { ...(s.globali.passi ?? {}), [baseId]: Math.max(0, passo) } } };
 }
 
 export function impostaPasso(s: Stato, situazioneId: string, passo: number): Stato {

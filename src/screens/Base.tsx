@@ -5,10 +5,28 @@ import { TabBadge } from '../components/TabBadge';
 import { MenuPath } from '../components/MenuPath';
 import { Callout } from '../components/Callout';
 import type { BaseFile } from '../types';
+import { useStato } from '../lib/useStato';
+import { vistaCorrente } from '../lib/storage';
+import { SelettoreVista } from '../components/SelettoreVista';
+import { BaseWizard } from './BaseWizard';
 
 /** Base video (M1) o base foto (M2): tutte le voci in ordine di menu, per scheda e gruppo. */
 export function Base({ tipo }: { tipo: 'video' | 'foto' }) {
   const base: BaseFile = tipo === 'video' ? baseVideo : baseFoto;
+  const { stato } = useStato();
+  if (vistaCorrente(stato) === 'wizard') {
+    return (
+      <>
+        <div class="page" style={{ paddingBottom: 0 }}>
+          <div class="seg" role="tablist" aria-label="Scegli la base">
+            <a href={href('/basi/video')} aria-current={tipo === 'video' ? 'page' : undefined}>Video · M1</a>
+            <a href={href('/basi/foto')} aria-current={tipo === 'foto' ? 'page' : undefined}>Foto · M2</a>
+          </div>
+        </div>
+        <BaseWizard base={base} />
+      </>
+    );
+  }
   const grouped = groupEntries(base.entries);
   const setup = groupEntries(base.setup);
   return (
@@ -17,6 +35,7 @@ export function Base({ tipo }: { tipo: 'video' | 'foto' }) {
         <a href={href('/basi/video')} aria-current={tipo === 'video' ? 'page' : undefined}>Video · M1</a>
         <a href={href('/basi/foto')} aria-current={tipo === 'foto' ? 'page' : undefined}>Foto · M2</a>
       </div>
+      <SelettoreVista />
       <h1>{base.titolo}</h1>
       <p class="dim">{base.descrizione}</p>
       <div class="card">

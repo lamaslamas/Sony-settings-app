@@ -1,5 +1,5 @@
 {
-  "nota": "Ogni situazione elenca solo le DIFFERENZE rispetto alla base (video → M1, foto → M2). source: menu = voce del menu (ref → menu-fw400.json), dial = ghiera/comando sul corpo, lens = comando dell'obiettivo (controlli in obiettivi.json). dynamic = valore da proporre dalla foto di prova (fase 3); example è solo un esempio. tbd = valore non deciso nella specifica, proposto come punto di partenza.",
+  "nota": "Ogni situazione elenca solo le DIFFERENZE rispetto alla base (video → M1, foto → M2). source: menu = voce del menu (ref → menu-fw400.json), dial = ghiera/comando sul corpo, lens = comando dell'obiettivo (controlli in obiettivi.json). dynamic = valore da proporre dalla foto di prova (fase 3); example è solo un esempio. tbd = valore non deciso nella specifica, proposto come punto di partenza. campo = tipo di valore per le regole fisse (tempo, diaframma, iso, isoMax, wb, steadyShot, afIlluminator, subjectRecog). strategia = come la foto di prova propone i valori (src/lib/proposte.ts).",
   "regole": [
     {
       "id": "int-tempo",
@@ -341,7 +341,8 @@
             "item": "White Balance"
           },
           "value": "Custom 1",
-          "note": "Da misurare sul cartoncino grigio, in sala, con la luce definitiva."
+          "note": "Da misurare sul cartoncino grigio, in sala, con la luce definitiva.",
+          "campo": "wb"
         },
         {
           "id": "iso",
@@ -354,7 +355,8 @@
           "value": "Manuale",
           "dynamic": "iso",
           "example": "3200",
-          "note": "ISO fisso, mai ISO AUTO."
+          "note": "ISO fisso, mai ISO AUTO.",
+          "campo": "iso"
         },
         {
           "id": "aperture",
@@ -362,7 +364,8 @@
           "label": "Aperture (F)",
           "value": "Da foto di prova",
           "dynamic": "aperture",
-          "example": "F2.8"
+          "example": "F2.8",
+          "campo": "diaframma"
         },
         {
           "id": "shutter",
@@ -373,7 +376,8 @@
           "alternatives": [
             "1/100"
           ],
-          "note": "1/100 come alternativa con luci artificiali."
+          "note": "1/100 come alternativa con luci artificiali.",
+          "campo": "tempo"
         },
         {
           "id": "audio",
@@ -416,6 +420,10 @@
       "compensazione": {
         "attiva": false,
         "nota": "ISO fisso: girare la ghiera di compensazione non cambia niente. Regola ISO e diaframma e controlla con le zebre."
+      },
+      "strategia": {
+        "modo": "isoFisso",
+        "diaframmaPreferito": 2.8
       }
     },
     {
@@ -441,7 +449,8 @@
           "alternatives": [
             "Kelvin fisso"
           ],
-          "note": "Misura sul cartoncino grigio con la luce del momento, oppure imposta Kelvin fissi. Mai Auto."
+          "note": "Misura sul cartoncino grigio con la luce del momento, oppure imposta Kelvin fissi. Mai Auto.",
+          "campo": "wb"
         },
         {
           "id": "iso",
@@ -453,14 +462,16 @@
           },
           "value": "Manuale",
           "dynamic": "iso",
-          "note": "ISO fisso, mai ISO AUTO."
+          "note": "ISO fisso, mai ISO AUTO.",
+          "campo": "iso"
         },
         {
           "id": "aperture",
           "source": "dial",
           "label": "Aperture (F)",
           "value": "Da foto di prova",
-          "dynamic": "aperture"
+          "dynamic": "aperture",
+          "campo": "diaframma"
         },
         {
           "id": "shutter",
@@ -470,7 +481,8 @@
           "dynamic": "shutter",
           "alternatives": [
             "1/100"
-          ]
+          ],
+          "campo": "tempo"
         },
         {
           "id": "audio",
@@ -515,6 +527,10 @@
       "compensazione": {
         "attiva": false,
         "nota": "ISO fisso: girare la ghiera di compensazione non cambia niente. Regola ISO e diaframma e controlla con le zebre."
+      },
+      "strategia": {
+        "modo": "isoFisso",
+        "diaframmaPreferito": 2.8
       }
     },
     {
@@ -540,14 +556,16 @@
           "alternatives": [
             "ISO fisso"
           ],
-          "note": "ISO AUTO è consentito per il B-roll (utile in movimento)."
+          "note": "ISO AUTO è consentito per il B-roll (utile in movimento).",
+          "campo": "iso"
         },
         {
           "id": "aperture",
           "source": "dial",
           "label": "Aperture (F)",
           "value": "Fisso",
-          "dynamic": "aperture"
+          "dynamic": "aperture",
+          "campo": "diaframma"
         },
         {
           "id": "shutter",
@@ -557,7 +575,8 @@
           "dynamic": "shutter",
           "alternatives": [
             "1/100"
-          ]
+          ],
+          "campo": "tempo"
         },
         {
           "id": "comp",
@@ -576,7 +595,8 @@
             "item": "SteadyShot"
           },
           "value": "On",
-          "note": "La base M1 ha SteadyShot Off (cavalletto): a mano libera va On."
+          "note": "La base M1 ha SteadyShot Off (cavalletto): a mano libera va On.",
+          "campo": "steadyShot"
         },
         {
           "id": "lens-af",
@@ -606,6 +626,10 @@
       "compensazione": {
         "attiva": true,
         "nota": "Con ISO AUTO la ghiera di compensazione funziona: tienila a 0 e correggi guardando le zebre/l'istogramma."
+      },
+      "strategia": {
+        "modo": "isoAuto",
+        "isoTarget": 800
       }
     },
     {
@@ -630,14 +654,16 @@
           "value": "ISO AUTO",
           "alternatives": [
             "ISO fisso"
-          ]
+          ],
+          "campo": "iso"
         },
         {
           "id": "aperture",
           "source": "dial",
           "label": "Aperture (F)",
           "value": "Fisso",
-          "dynamic": "aperture"
+          "dynamic": "aperture",
+          "campo": "diaframma"
         },
         {
           "id": "shutter",
@@ -647,7 +673,8 @@
           "dynamic": "shutter",
           "alternatives": [
             "1/100"
-          ]
+          ],
+          "campo": "tempo"
         },
         {
           "id": "comp",
@@ -665,7 +692,8 @@
             "item": "SteadyShot"
           },
           "value": "On",
-          "note": "La base M1 ha SteadyShot Off (cavalletto): a mano libera va On."
+          "note": "La base M1 ha SteadyShot Off (cavalletto): a mano libera va On.",
+          "campo": "steadyShot"
         },
         {
           "id": "lens-af",
@@ -696,6 +724,10 @@
       "compensazione": {
         "attiva": true,
         "nota": "Con ISO AUTO la ghiera di compensazione funziona: tienila a 0 e correggi guardando le zebre/l'istogramma."
+      },
+      "strategia": {
+        "modo": "isoAuto",
+        "isoTarget": 800
       }
     },
     {
@@ -724,19 +756,22 @@
             "item": "ISO"
           },
           "value": "ISO AUTO",
-          "note": "Già nella base M2: in M serve ISO AUTO per usare la compensazione."
+          "note": "Già nella base M2: in M serve ISO AUTO per usare la compensazione.",
+          "campo": "iso"
         },
         {
           "id": "shutter",
           "source": "dial",
           "label": "Shutter speed",
-          "value": "1/200"
+          "value": "1/200",
+          "campo": "tempo"
         },
         {
           "id": "aperture",
           "source": "dial",
           "label": "Aperture (F)",
-          "value": "F2.8"
+          "value": "F2.8",
+          "campo": "diaframma"
         },
         {
           "id": "lens-oss",
@@ -773,7 +808,8 @@
           "source": "dial",
           "label": "Aperture (F)",
           "value": "F5.6–F8",
-          "note": "Per avere tutti a fuoco."
+          "note": "Per avere tutti a fuoco.",
+          "campo": "diaframma"
         },
         {
           "id": "lens-oss",
@@ -822,13 +858,15 @@
             "item": "ISO"
           },
           "value": "ISO AUTO",
-          "note": "Già nella base M2: in M serve ISO AUTO per usare la compensazione."
+          "note": "Già nella base M2: in M serve ISO AUTO per usare la compensazione.",
+          "campo": "iso"
         },
         {
           "id": "shutter",
           "source": "dial",
           "label": "Shutter speed",
-          "value": "1/125"
+          "value": "1/125",
+          "campo": "tempo"
         },
         {
           "id": "aperture",
@@ -838,7 +876,8 @@
           "alternatives": [
             "F5.6"
           ],
-          "note": "F5.6 con più file."
+          "note": "F5.6 con più file.",
+          "campo": "diaframma"
         },
         {
           "id": "lens-oss",
@@ -884,7 +923,8 @@
             "group": "Exposure",
             "item": "ISO"
           },
-          "value": "ISO AUTO"
+          "value": "ISO AUTO",
+          "campo": "iso"
         },
         {
           "id": "iso-max",
@@ -895,7 +935,8 @@
             "item": "ISO Range Limit",
             "sub": "Maximum"
           },
-          "value": "6400"
+          "value": "6400",
+          "campo": "isoMax"
         },
         {
           "id": "shutter",
@@ -906,13 +947,15 @@
             "1/2000",
             "1/3200"
           ],
-          "note": "In volo 1/2000–1/3200."
+          "note": "In volo 1/2000–1/3200.",
+          "campo": "tempo"
         },
         {
           "id": "aperture",
           "source": "dial",
           "label": "Aperture (F)",
-          "value": "Tutta apertura"
+          "value": "Tutta apertura",
+          "campo": "diaframma"
         },
         {
           "id": "zebra-on",
@@ -975,7 +1018,8 @@
             "group": "AF/MF",
             "item": "AF Illuminator"
           },
-          "value": "Off"
+          "value": "Off",
+          "campo": "afIlluminator"
         },
         {
           "id": "lens-limiter",
@@ -1009,6 +1053,10 @@
       "compensazione": {
         "attiva": true,
         "nota": "Con ISO AUTO la ghiera di compensazione funziona: tienila a 0 e correggi guardando le zebre/l'istogramma."
+      },
+      "strategia": {
+        "modo": "isoAuto",
+        "diaframmaTuttaApertura": true
       }
     },
     {
@@ -1030,7 +1078,8 @@
           "alternatives": [
             "F5.6"
           ],
-          "note": "F5.6 con poca luce."
+          "note": "F5.6 con poca luce.",
+          "campo": "diaframma"
         },
         {
           "id": "focus-mode",
@@ -1060,7 +1109,8 @@
             "group": "Subject Recognition",
             "item": "Subject Recog in AF"
           },
-          "value": "Off"
+          "value": "Off",
+          "campo": "subjectRecog"
         },
         {
           "id": "drive",

@@ -28,3 +28,21 @@ const LIVELLI: LivelloEv[] = [
   { max: Infinity, testo: 'Pieno sole' },
 ];
 export const descriviEv = (ev: number): string => LIVELLI.find((l) => ev < l.max)!.testo;
+
+// ---- Serie standard di ISO e diaframmi (terzi di stop) e legge di esposizione ----
+
+export const SERIE_ISO = [100, 125, 160, 200, 250, 320, 400, 500, 640, 800, 1000, 1250, 1600, 2000, 2500, 3200, 4000, 5000, 6400, 8000, 10000, 12800, 16000, 20000, 25600, 32000];
+export const SERIE_F = [1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.5, 2.8, 3.2, 3.5, 4, 4.5, 5, 5.6, 6.3, 7.1, 8, 9, 10, 11, 13, 14, 16, 18, 20, 22];
+
+/** ISO necessario per esporre una scena di EV100 `ev` con diaframma N e tempo t (secondi). */
+export const isoNecessario = (ev: number, N: number, t: number): number => (100 * N * N) / (t * 2 ** ev);
+
+const piuVicino = (serie: number[], x: number): number =>
+  serie.reduce((best, v) => (Math.abs(Math.log(v / x)) < Math.abs(Math.log(best / x)) ? v : best));
+export const isoPiuVicino = (iso: number): number => piuVicino(SERIE_ISO, iso);
+export const fPiuVicino = (f: number): number => piuVicino(SERIE_F, f);
+/** Diaframma successivo, più chiuso, di un terzo di stop. */
+export const fPiuChiuso = (f: number): number => SERIE_F.find((v) => v > fPiuVicino(f) + 0.01) ?? SERIE_F[SERIE_F.length - 1];
+
+export const formattaF = (f: number): string => `F${Number.isInteger(f) ? f : f}`;
+export const formattaTempo = (denominatore: number): string => `1/${denominatore}`;

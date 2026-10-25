@@ -1,9 +1,12 @@
-import { useEffect, useState } from 'preact/hooks';
+import { useEffect } from 'preact/hooks';
 import type { Diff, Situazione } from '../types';
 import { situazioneById, situazioniFile, obiettivi, tabById, baseVideo, baseFoto } from '../lib/data';
 import { useStato } from '../lib/useStato';
-import { aggiornaEvento, azzeraSpunte, impostaPasso, impostaSpunta, impostaValore } from '../lib/storage';
+import { aggiornaEvento, azzeraSpunte, impostaPasso, impostaSpunta } from '../lib/storage';
+import { Correzioni, LetturaEScelte, ModificaValore, PassoEsposizione, nomeDiff } from '../components/SituazioneParti';
 import { chiavePasso, costruisciPassi, vocePresente, type Passo } from '../lib/wizard';
+import { proposteDi, scelteDi, suggerisciLuciArtificiali } from '../lib/useProposte';
+import type { PropostaDiff, Proposte } from '../lib/proposte';
 import { href } from '../router';
 import { TabBadge } from '../components/TabBadge';
 import { VerifyBadge } from '../components/Badges';
@@ -11,38 +14,13 @@ import { MenuPath } from '../components/MenuPath';
 import { Callout } from '../components/Callout';
 import { CameraMenu } from '../components/CameraMenu';
 import { Icon } from '../components/Icon';
+import { WizardShell } from '../components/WizardShell';
+import { SelettoreVista } from '../components/SelettoreVista';
 
-const nomeDiff = (d: Diff): string =>
-  d.source === 'menu' && d.ref ? (d.ref.sub ? `${d.ref.item} › ${d.ref.sub}` : d.ref.item)
-  : d.source === 'lens' ? (obiettivi.controlli[d.control ?? ''] ?? d.control ?? '')
-  : d.label ?? '';
-
-/** Modifica del valore proposto (resta sempre modificabile). */
-function ModificaValore({ chiave, predefinito }: { chiave: string; predefinito: string }) {
-  const { evento, aggiorna } = useStato();
-  const modificato = evento.valori[chiave];
-  const [edit, setEdit] = useState(false);
-  const [bozza, setBozza] = useState(modificato ?? predefinito);
-  if (edit) {
-    return (
-      <div class="valueedit">
-        <input aria-label="Nuovo valore" value={bozza} onInput={(e) => setBozza((e.target as HTMLInputElement).value)} />
-        <button class="btn small primary" onClick={() => { aggiorna((s) => impostaValore(s, chiave, bozza === predefinito ? undefined : bozza)); setEdit(false); }}>Ok</button>
-      </div>
-    );
-  }
-  return (
-    <div class="row">
-      <button class="btn small" onClick={() => { setBozza(modificato ?? predefinito); setEdit(true); }}>Modifica valore</button>
-      {modificato !== undefined && <button class="btn small" onClick={() => aggiorna((s) => impostaValore(s, chiave, undefined))}>Ripristina</button>}
-    </div>
-  );
-}
-
-function PassoDiff({ sid, d }: { sid: string; d: Diff }) {
+function PassoDiff({ sid, d, p, predefinito }: { sid: string; d: Diff; p: PropostaDiff; predefinito: string }) {
   const { evento } = useStato();
   const chiave = `sit/${sid}/${d.id}`;
-  const valore = evento.valori[chiave] ?? d.value;
+  const valore = p.valore;
   const tab = d.ref ? tabById(d.ref.tab) : undefined;
   const lens = obiettivi.obiettivi.find((o) => o.id === evento.obiettivoId);
   return (
@@ -52,7 +30,9 @@ function PassoDiff({ sid, d }: { sid: string; d: Diff }) {
       )}
       <h1 style={{ marginBottom: 0 }}>{nomeDiff(d)}</h1>
       <div class="valore-grande">{valore}{evento.valori[chiave] !== undefined && <span class="badge" style={{ marginLeft: 10 }}>modificato</span>}</div>
-      {d.dynamic && d.example && <div class="small dim">Dalla foto di prova (esempio: {d.example}).</div>}
+      {p.origine === 'calcolato' && <div class="small dim">Calcolato dalla foto di prova. Puoi cambiarlo.</div>}
+      {p.origine === 'fisso' && d.dynamic && <div class="small dim">Fai la foto di prova per un valore calcolato{d.example ? ` (esempio: ${d.example})` : ''}.</div>}
+      <Correzioni p={p} />
       {(d.verify || !vocePresente(d)) && <div><VerifyBadge /></div>}
 
       {d.source === 'menu' && d.ref && <CameraMenu r={d.ref} valore={valore} />}
@@ -63,43 +43,7 @@ function PassoDiff({ sid, d }: { sid: string; d: Diff }) {
       {d.alternatives && <div class="small dim">Alternative: {d.alternatives.join(' · ')}</div>}
       {d.note && <Callout>{d.note}</Callout>}
       {d.source === 'menu' && d.ref && <MenuPath r={d.ref} />}
-      <ModificaValore chiave={chiave} predefinito={d.value} />
-    </div>
-  );
-}
-
-function PassoEsposizione({ s }: { s: Situazione }) {
-  const { evento, aggiorna } = useStato();
-  const zebre = situazioniFile.metodoZebre;
-  const modo = evento.modalitaZebre ?? s.zebre?.modalitaDefault ?? 'isoAuto';
-  return (
-    <div class="stack">
-      <h1 style={{ marginBottom: 0 }}>Esposizione</h1>
-      <Callout title="Ghiera di compensazione">{s.compensazione.nota}</Callout>
-      {s.zebre ? (
-        <div class="card stack">
-          <p style={{ margin: 0 }}>Zebra Level <b class="value">{s.zebre.livello}</b>{s.zebre.alternative.length > 0 && <> · alternativa <b>{s.zebre.alternative.join(', ')}</b></>} {s.zebre.verify && <VerifyBadge />}</p>
-          {s.zebre.nota && <p class="small dim" style={{ margin: 0 }}>{s.zebre.nota}</p>}
-          {s.tipo === 'video' && <ul>{zebre.comeLeggereZebraVideo.map((t) => <li key={t}>{t}</li>)}</ul>}
-          {s.zebre.metodo && (
-            <>
-              <h3>{zebre.titolo}</h3>
-              <p class="dim">{zebre.quando}</p>
-              <div class="seg" role="group" aria-label="Modalità zebre">
-                {(['isoAuto', 'isoFisso'] as const).map((m) => (
-                  <button key={m} aria-pressed={modo === m} onClick={() => aggiorna((st) => aggiornaEvento(st, (ev) => ({ ...ev, modalitaZebre: m })))}>{zebre.modalita[m].nome}</button>
-                ))}
-              </div>
-              <p class="dim">{zebre.modalita[modo].consigliata}</p>
-              <p>{zebre.modalita[modo].intro}</p>
-              <ol>{zebre.modalita[modo].passi.map((p) => <li key={p}>{p}</li>)}</ol>
-              <Callout>{zebre.modalita[modo].nota}</Callout>
-            </>
-          )}
-        </div>
-      ) : (
-        <p class="dim">Zebre non previste per questa situazione (le alte luci non sono critiche).</p>
-      )}
+      <ModificaValore chiave={chiave} predefinito={predefinito} />
     </div>
   );
 }
@@ -118,7 +62,6 @@ function titoloPasso(p: Passo, s: Situazione): string {
 export function Wizard({ id }: { id: string }) {
   const { evento, aggiorna } = useStato();
   const s = situazioneById(id);
-  const [elenco, setElenco] = useState(false);
 
   useEffect(() => {
     if (s) aggiorna((st) => aggiornaEvento(st, (e) => (e.ultimaSituazione === s.id ? e : { ...e, ultimaSituazione: s.id })));
@@ -131,6 +74,8 @@ export function Wizard({ id }: { id: string }) {
   // Solo i controlli dell'obiettivo montato; senza scelta si vedono tutti.
   const visibili = s.diff.filter((d) => d.source !== 'lens' || !lens || lens.controlli.some((c) => c.id === d.control));
   const salva = situazioniFile.salvataggioEvento[s.tipo];
+  const proposte = proposteDi(s, evento);
+  const senzaModifiche = proposteDi(s, { ...evento, valori: {} }); // proposta calcolata, per “Ripristina”
   const passi = costruisciPassi(s, visibili, salva.passi.length);
   const n = passi.length;
   const idx = Math.min(evento.passi?.[s.id] ?? 0, n - 1);
@@ -147,31 +92,18 @@ export function Wizard({ id }: { id: string }) {
   const nFatti = operativi.filter((p) => evento.spunte[chiavePasso(s.id, p)!]).length;
 
   return (
-    <div class="page stack wizard">
-      <div class="row" style={{ justifyContent: 'space-between' }}>
-        <a href={href('/luce')}>← Situazioni</a>
-        <button class="btn small" onClick={() => setElenco(!elenco)} aria-expanded={elenco}>{elenco ? 'Chiudi elenco' : 'Tutti i passi'}</button>
-      </div>
-      <div>
-        <div class="small dim">{s.nome} · {base.titolo} · {s.supporto}</div>
-        <div class="progress" aria-live="polite">Passo {idx + 1} di {n} · {nFatti} fatti</div>
-        <div class="bar" role="progressbar" aria-valuemin={1} aria-valuemax={n} aria-valuenow={idx + 1}><div style={{ width: `${((idx + 1) / n) * 100}%` }} /></div>
-      </div>
-
-      {elenco && (
-        <div class="card" style={{ padding: 0 }}>
-          {passi.map((p, i) => {
-            const k = chiavePasso(s.id, p);
-            const stato = k ? (evento.spunte[k] ? '✓' : i < idx ? '–' : '○') : '○';
-            return (
-              <button key={i} class={`cam-riga${i === idx ? ' sel' : ''}`} onClick={() => { vai(i); setElenco(false); }}>
-                <span class="cam-nome">{i + 1}. {titoloPasso(p, s)}</span><span class="cam-valore">{stato}</span>
-              </button>
-            );
-          })}
-        </div>
-      )}
-
+    <WizardShell
+      intestazione={<a href={href('/luce')}>← Situazioni</a>}
+      selettore={<SelettoreVista />}
+      sottotitolo={`${s.nome} · ${base.titolo} · ${s.supporto}`}
+      idx={idx} n={n} nFatti={nFatti} onVai={vai}
+      elenco={passi.map((p, i) => {
+        const k = chiavePasso(s.id, p);
+        return { titolo: titoloPasso(p, s), stato: k ? (evento.spunte[k] ? '✓' : i < idx ? '–' : '○') : '○' };
+      })}
+      tipo={passo.tipo === 'intro' ? 'intro' : passo.tipo === 'fine' ? 'fine' : 'normale'}
+      fatto={fatto} onAvanti={avanti}
+    >
       {passo.tipo === 'intro' && (
         <div class="stack">
           <h1 style={{ marginBottom: 0 }}>{s.nome}</h1>
@@ -192,13 +124,15 @@ export function Wizard({ id }: { id: string }) {
               {obiettivi.obiettivi.map((o) => <option value={o.id} key={o.id}>{o.nome}</option>)}
             </select>
           </div>
+          <LetturaEScelte s={s} />
+          {proposte.note.map((nota) => <Callout key={nota} title="Dalla foto di prova">{nota}</Callout>)}
           {s.note.map((nota) => <Callout key={nota}>{nota}</Callout>)}
           <p class="dim">{operativi.length} passi da fare, in ordine di menu.</p>
         </div>
       )}
 
-      {passo.tipo === 'diff' && <PassoDiff sid={s.id} d={passo.diff} />}
-      {passo.tipo === 'esposizione' && <PassoEsposizione s={s} />}
+      {passo.tipo === 'diff' && <PassoDiff sid={s.id} d={passo.diff} p={proposte.perDiff[passo.diff.id]} predefinito={senzaModifiche.perDiff[passo.diff.id].valore} />}
+      {passo.tipo === 'esposizione' && <PassoEsposizione s={s} proposte={proposte} />}
 
       {passo.tipo === 'salva' && (() => {
         const p = salva.passi[passo.indice];
@@ -224,17 +158,6 @@ export function Wizard({ id }: { id: string }) {
         </div>
       )}
 
-      <div class="wizbar">
-        <button class="btn" disabled={idx === 0} onClick={() => vai(idx - 1)} aria-label="Passo precedente"><Icon name="back" />Indietro</button>
-        {passo.tipo === 'fine' ? null : passo.tipo === 'intro' ? (
-          <button class="btn primary" onClick={() => avanti(false)}>Inizia<Icon name="next" /></button>
-        ) : (
-          <>
-            {!fatto && <button class="btn" onClick={() => avanti(false)}>Salta</button>}
-            <button class="btn primary" onClick={() => avanti(true)}>{fatto ? 'Avanti' : 'Fatto'}<Icon name="next" /></button>
-          </>
-        )}
-      </div>
-    </div>
+    </WizardShell>
   );
 }
