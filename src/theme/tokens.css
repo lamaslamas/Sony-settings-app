@@ -27,6 +27,18 @@
   --tab-mymenu: #a16207;
   --on-tab: #ffffff;
 
+  /* Schermo del menu della camera (riproduzione): sfondo, righe, evidenziazione.
+     Da affinare con le foto del tuo schermo. */
+  --cam-bg: #1b1b1d;
+  --cam-panel: #262629;
+  --cam-row: #2f2f33;
+  --cam-line: #46464c;
+  --cam-text: #f4f4f6;
+  --cam-dim: #a4a4ac;
+  --cam-sel: #ffb020;        /* riga selezionata */
+  --cam-sel-text: #1a1300;
+  --cam-icon: #d9d9de;       /* icone delle schede non attive */
+
   /* Dimensioni: testo minimo 16 px, aree tattili minime 48 px */
   --font-base: 18px;
   --font-small: 16px;

@@ -106,3 +106,58 @@ details.tree .inner { padding: 0 var(--gutter) var(--gutter); }
 .valueedit { display: flex; gap: 8px; margin-top: 6px; }
 .valueedit input { flex: 1; min-height: var(--hit); font: inherit; padding: 8px 12px; color: var(--text); background: var(--bg); border: 2px solid var(--accent); border-radius: var(--radius); }
 .btn.small { min-height: var(--hit); padding: 6px 14px; font-size: var(--font-small); }
+
+/* ---- Riproduzione dello schermo del menu della camera ---- */
+.cam {
+  display: grid; grid-template-columns: 44px minmax(0, 1fr) minmax(0, 1.1fr);
+  background: var(--cam-bg); border: 2px solid var(--cam-line); border-radius: var(--radius); overflow: hidden;
+  color: var(--cam-text); font-size: var(--font-small);
+}
+.cam-tabs { display: flex; flex-direction: column; background: var(--cam-panel); border-right: 2px solid var(--cam-line); }
+.cam-tab {
+  display: flex; align-items: center; justify-content: center; min-height: 36px; flex: 1; padding: 0;
+  color: var(--cam-icon); background: transparent; border: 0; font: inherit;
+}
+.cam-tabs.alta .cam-tab { min-height: var(--hit); }
+.cam-tab svg { width: 24px; height: 24px; }
+.cam-tab.on { background: var(--tab-color, var(--tab-main)); color: var(--on-tab); }
+button.cam-tab { cursor: pointer; }
+.cam-gruppi, .cam-voci { display: flex; flex-direction: column; min-width: 0; }
+.cam-gruppi { border-right: 2px solid var(--cam-line); }
+.cam-riga {
+  display: flex; align-items: center; justify-content: space-between; gap: 8px; min-height: 48px;
+  padding: 4px 8px; border-bottom: 1px solid var(--cam-line); line-height: 1.2; text-align: left;
+  background: transparent; color: var(--cam-text); font: inherit; border-left: 0; border-right: 0; border-top: 0; width: 100%;
+}
+.cam-riga.sotto { padding-left: 24px; background: var(--cam-row); }
+.cam-riga.sel { background: var(--cam-sel); color: var(--cam-sel-text); font-weight: 700; }
+.cam-gruppi .cam-riga { gap: 6px; }
+.cam-num { flex: none; min-width: 1.35em; height: 1.35em; padding: 0 2px; display: inline-flex; align-items: center; justify-content: center; border: 1.5px solid currentColor; border-radius: 4px; font-size: 0.85em; }
+.cam-nome { flex: 1; min-width: 0; overflow-wrap: break-word; hyphens: manual; }
+.cam-gruppi .cam-riga { justify-content: flex-start; }
+.cam-valore { flex: none; max-width: 55%; text-align: right; font-weight: 800; overflow-wrap: anywhere; }
+button.cam-riga { cursor: pointer; }
+.cam-scroll { max-height: 55vh; overflow-y: auto; }
+
+/* ---- Wizard ---- */
+.valore-grande { font-size: 2rem; font-weight: 800; color: var(--accent); line-height: 1.15; overflow-wrap: anywhere; }
+.bar { height: 10px; background: var(--surface-2); border-radius: 999px; overflow: hidden; margin-top: 6px; border: 1px solid var(--border); }
+.bar > div { height: 100%; background: var(--accent); }
+.dialcard { display: flex; gap: 14px; align-items: center; }
+.dialcard svg { width: 44px; height: 44px; flex: none; color: var(--accent); }
+.wizard { padding-bottom: 96px; }
+.wizbar {
+  position: fixed; left: 0; right: 0; bottom: calc(var(--hit) + 12px + env(safe-area-inset-bottom));
+  display: flex; gap: var(--gap); padding: 10px var(--gutter); background: var(--surface);
+  border-top: 2px solid var(--border); max-width: 720px; margin: 0 auto;
+}
+.wizbar .btn { flex: 1; }
+.wizbar .btn.primary { flex: 2; }
+.btn svg { width: 22px; height: 22px; }
+.cam-dettaglio { padding: 10px; background: var(--cam-row); border-bottom: 1px solid var(--cam-line); }
+.cam-dettaglio .dim { color: var(--cam-dim); }
+.camcard { background: var(--cam-bg); border-color: var(--cam-line); }
+.camcard .entry { border-bottom-color: var(--cam-line); }
+.cam-testata { display: flex; gap: 10px; align-items: center; min-height: var(--hit); padding: 6px var(--gutter); background: var(--cam-panel); font-weight: 700; border-bottom: 2px solid var(--cam-line); }
+.cam-riga.voce { background: var(--cam-row); border-radius: 8px; border-bottom: 0; padding: 8px 12px; }
+.cam-riga.voce .cam-valore { color: var(--cam-sel); max-width: 60%; }

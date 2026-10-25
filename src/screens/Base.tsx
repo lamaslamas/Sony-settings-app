@@ -28,8 +28,8 @@ export function Base({ tipo }: { tipo: 'video' | 'foto' }) {
         <section key={tab.id} class="stack">
           <h2><TabBadge tab={tab} /></h2>
           {groups.map((g) => (
-            <div class="card" style={{ padding: 0 }} key={g.name}>
-              <div class="entry"><b>{g.name}</b></div>
+            <div class="card camcard" style={{ padding: 0 }} key={g.name}>
+              <div class="cam-testata"><span class="cam-num">{(tab.groups.findIndex((x) => x.name === g.name) + 1) || '•'}</span> {g.name}</div>
               {g.entries.map((e) => <EntryRow e={e} hideTab key={`${e.item}${e.sub}`} />)}
             </div>
           ))}
