@@ -93,7 +93,7 @@ export function Wizard({ id }: { id: string }) {
 
   return (
     <WizardShell
-      intestazione={<a href={href('/luce')}>← Situazioni</a>}
+      intestazione={<a class="backlink" href={href('/luce')}>← Situazioni</a>}
       selettore={<SelettoreVista />}
       sottotitolo={`${s.nome} · ${base.titolo} · ${s.supporto}`}
       idx={idx} n={n} nFatti={nFatti} onVai={vai}

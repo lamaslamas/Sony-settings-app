@@ -15,7 +15,7 @@ small, .small { font-size: var(--font-small); }
 .dim { color: var(--text-dim); }
 
 /* Struttura */
-.app { min-height: 100dvh; padding-bottom: calc(var(--hit) + 36px + env(safe-area-inset-bottom)); }
+.app { min-height: 100dvh; padding-bottom: calc(var(--navh, 72px) + 12px); }
 .page { max-width: 720px; margin: 0 auto; padding: var(--gutter); }
 .stack > * + * { margin-top: var(--gap); }
 
@@ -26,7 +26,7 @@ small, .small { font-size: var(--font-small); }
 }
 .nav a {
   flex: 1; min-height: calc(var(--hit) + 12px); display: flex; flex-direction: column;
-  align-items: center; justify-content: center; gap: 2px; text-decoration: none;
+  align-items: center; justify-content: center; gap: 2px; text-decoration: none; min-width: 0; overflow-wrap: anywhere; text-align: center;
   color: var(--text-dim); font-size: var(--font-small); padding: 4px 2px;
 }
 .nav a[aria-current="page"] { color: var(--accent); box-shadow: inset 0 3px 0 var(--accent); }
@@ -45,7 +45,7 @@ small, .small { font-size: var(--font-small); }
 .btn[disabled], .btn[aria-disabled="true"] { opacity: .55; cursor: not-allowed; }
 .btn.block { display: flex; width: 100%; }
 .row { display: flex; flex-wrap: wrap; gap: var(--gap); align-items: center; }
-.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: var(--gap); }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(150px, 100%), 1fr)); gap: var(--gap); }
 .tile {
   display: flex; flex-direction: column; justify-content: center; gap: 4px; min-height: 72px;
   padding: 12px; border-radius: var(--radius); border: 2px solid var(--border);
@@ -104,7 +104,7 @@ details.tree .inner { padding: 0 var(--gutter) var(--gutter); }
 .eventobar .small:last-child { margin-left: auto; color: var(--accent); }
 .progress { font-weight: 700; color: var(--accent); }
 .valueedit { display: flex; gap: 8px; margin-top: 6px; }
-.valueedit input { flex: 1; min-height: var(--hit); font: inherit; padding: 8px 12px; color: var(--text); background: var(--bg); border: 2px solid var(--accent); border-radius: var(--radius); }
+.valueedit input { flex: 1; min-width: 0; min-height: var(--hit); font: inherit; padding: 8px 12px; color: var(--text); background: var(--bg); border: 2px solid var(--accent); border-radius: var(--radius); }
 .btn.small { min-height: var(--hit); padding: 6px 14px; font-size: var(--font-small); }
 
 /* ---- Riproduzione dello schermo del menu della camera ---- */
@@ -112,9 +112,9 @@ details.tree .inner { padding: 0 var(--gutter) var(--gutter); }
 .cam-testa { display: flex; justify-content: space-between; align-items: baseline; padding: 8px 12px 6px; font-size: 1.05rem; letter-spacing: .01em; }
 .cam-pie { display: flex; justify-content: flex-end; gap: 16px; align-items: center; padding: 6px 12px 8px; color: var(--cam-dim); }
 .cam-pie .chiudi { border: 1.5px solid var(--cam-dim); border-radius: 6px; padding: 2px 10px; color: var(--cam-text); }
-.cam-pie .chiudi b { font-size: .7em; border: 1px solid currentColor; border-radius: 3px; padding: 0 3px; margin-right: 4px; background: var(--cam-text); color: var(--cam-bg); }
-.cam { display: grid; grid-template-columns: 44px minmax(0, 1fr) minmax(0, 1.1fr); background: var(--cam-bg); }
-.cam.voce { grid-template-columns: 44px 38px minmax(0, 1fr); }
+.cam-pie .chiudi b { font-size: var(--font-small); border: 1px solid currentColor; border-radius: 3px; padding: 0 3px; margin-right: 4px; background: var(--cam-text); color: var(--cam-bg); }
+.cam { display: grid; grid-template-columns: 48px minmax(0, 1fr) minmax(0, 1.1fr); background: var(--cam-bg); }
+.cam.voce { grid-template-columns: 48px 40px minmax(0, 1fr); }
 .cam-tabs { display: flex; flex-direction: column; }
 .cam-tab {
   display: flex; align-items: center; justify-content: center; min-height: 36px; flex: 1; padding: 0; border: 0; font: inherit;
@@ -139,8 +139,8 @@ button.cam-tab { cursor: pointer; }
 .cam-riga.sel { background: var(--cam-sel); color: var(--cam-sel-text); }
 .cam-riga.sel .cam-valore { color: var(--cam-value); }
 .cam-num {
-  flex: none; min-width: 1.45em; height: 1.45em; display: inline-flex; align-items: center; justify-content: center;
-  background: var(--c, var(--cam-tab-main)); color: #fff; font-size: .8em; font-weight: 700; border-radius: 3px;
+  flex: none; min-width: 1.5em; height: 1.5em; display: inline-flex; align-items: center; justify-content: center;
+  background: var(--c, var(--cam-tab-main)); color: #fff; font-size: var(--font-small); font-weight: 700; border-radius: 3px;
 }
 .cam-num.spento { background: transparent; color: var(--cam-dim); }
 .cam-nome { flex: 1; min-width: 0; overflow-wrap: break-word; hyphens: manual; }
@@ -161,9 +161,9 @@ button.cam-riga { cursor: pointer; }
 .bar > div { height: 100%; background: var(--accent); }
 .dialcard { display: flex; gap: 14px; align-items: center; }
 .dialcard svg { width: 44px; height: 44px; flex: none; color: var(--accent); }
-.wizard { padding-bottom: 96px; }
+.wizard { padding-bottom: calc(var(--wizh, 72px) + 24px); }
 .wizbar {
-  position: fixed; left: 0; right: 0; bottom: calc(var(--hit) + 12px + env(safe-area-inset-bottom));
+  position: fixed; left: 0; right: 0; bottom: var(--navh, 72px);
   display: flex; gap: var(--gap); padding: 10px var(--gutter); background: var(--surface);
   border-top: 2px solid var(--border); max-width: 720px; margin: 0 auto;
 }
@@ -177,3 +177,12 @@ button.cam-riga { cursor: pointer; }
 .cam-testata { display: flex; gap: 10px; align-items: center; min-height: var(--hit); padding: 6px var(--gutter); background: var(--cam-panel); font-weight: 700; border-bottom: 2px solid var(--cam-line); }
 .cam-riga.voce { background: var(--cam-row); border-radius: 8px; border-bottom: 0; padding: 8px 12px; }
 .cam-riga.voce .cam-valore { color: var(--cam-sel); max-width: 60%; }
+
+/* Link di navigazione con area tattile da 48 px */
+.backlink { display: inline-flex; align-items: center; min-height: var(--hit); }
+.salta { position: absolute; left: -999px; top: 0; z-index: 10; }
+.salta:focus { left: var(--gutter); top: 8px; }
+main:focus { outline: none; }
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; transition: none !important; animation: none !important; } }
+.check .body { min-width: 0; flex: 1; overflow-wrap: anywhere; }
+.tile { min-width: 0; overflow-wrap: anywhere; }

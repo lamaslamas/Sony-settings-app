@@ -8,7 +8,7 @@
   --bg: #111214;
   --surface: #1b1d21;
   --surface-2: #262930;
-  --border: #4a4f59;
+  --border: #6b717d;
   --text: #f5f6f8;
   --text-dim: #c3c7cf;
 
@@ -47,7 +47,7 @@
   --cam-tab-exposure: #cf1d99;  --cam-tab-exposure-dim: #450a33;
   --cam-tab-focus: #9527bf;     --cam-tab-focus-dim: #2f0741;
   --cam-tab-playback: #0366cd;  --cam-tab-playback-dim: #012040;
-  --cam-tab-network: #2aae2a;   --cam-tab-network-dim: #0e3a0e;
+  --cam-tab-network: #1f9a2c;   --cam-tab-network-dim: #0e3a0e;
   --cam-tab-setup: #9c8b1f;     --cam-tab-setup-dim: #2f1e04;
 
   /* Dimensioni: testo minimo 16 px, aree tattili minime 48 px */

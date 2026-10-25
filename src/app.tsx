@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'preact/hooks';
 import { usePath } from './router';
 import { Nav } from './components/Nav';
 import { Home } from './screens/Home';
@@ -13,6 +14,15 @@ import { EventoBar } from './components/EventoBar';
 
 export function App() {
   const path = usePath();
+  const main = useRef<HTMLElement>(null);
+  // Altezza reale della barra in basso: cambia con il testo ingrandito e con l'area sicura dell'iPhone.
+  useEffect(() => {
+    const nav = document.querySelector('.nav');
+    if (!nav) return;
+    const ro = new ResizeObserver(() => document.documentElement.style.setProperty('--navh', `${Math.ceil(nav.getBoundingClientRect().height)}px`));
+    ro.observe(nav);
+    return () => ro.disconnect();
+  }, []);
   let screen;
   if (path === '/') screen = <Home />;
   else if (path === '/luce') screen = <Luce />;
@@ -27,8 +37,9 @@ export function App() {
   else screen = <Home />;
   return (
     <div class="app">
+      <button class="salta btn" onClick={() => main.current?.focus()}>Vai al contenuto</button>
       <EventoBar />
-      <main>{screen}</main>
+      <main ref={main} tabIndex={-1}>{screen}</main>
       <Nav path={path} />
     </div>
   );

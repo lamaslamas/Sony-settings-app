@@ -173,7 +173,7 @@ Ogni voce può avere `verify: true`; nell'interfaccia mostra un badge "da verifi
 
 ## Requisiti tecnici
 
-- PWA installabile e completamente offline: dati, checklist e analisi della foto funzionano senza rete.
+- PWA installabile e completamente offline: dati, checklist e analisi della foto funzionano senza rete (service worker con precache; aggiornamento su conferma; verificato scollegando la rete).
 - Hosting gratuito su GitHub Pages dal repository `lamaslamas/sony-settings-app`, con deploy automatico tramite GitHub Actions.
 - Stack confermato: Vite + TypeScript + Preact, CSS con variabili in `src/theme/tokens.css`, `vite-plugin-pwa`, `localStorage`, `exifr`, Vitest.
 - Stato delle checklist salvato in locale per evento (posso riprendere dove ero), compresi l'obiettivo montato (`obiettivoId`) e la modalità zebre scelta (`modalitaZebre`: `isoAuto` | `isoFisso`) per wildlife e B-roll.

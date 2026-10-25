@@ -108,8 +108,8 @@ export function LetturaEScelte({ s }: { s: Situazione }) {
   return (
     <div class="card stack">
       <h2 style={{ margin: 0 }}>3. Luce e scelte</h2>
-      {!l && <p style={{ margin: 0 }} class="dim">Nessuna foto di prova: valori fissi della situazione. <a href={href('/')}>Fai la foto di prova</a>{s.tipo === 'foto' ? ' (facoltativa per le foto)' : ''}.</p>}
-      {l && !l.valida && <Callout title="Foto di prova da rifare" strong>{l.problemi.join(' ')} <a href={href('/')}>Rifai la foto</a></Callout>}
+      {!l && <div class="stack"><p style={{ margin: 0 }} class="dim">Nessuna foto di prova: valori fissi della situazione{s.tipo === 'foto' ? ' (la foto è facoltativa)' : ''}.</p><a class="btn small" href={href('/')}>Fai la foto di prova</a></div>}
+      {l && !l.valida && <Callout title="Foto di prova da rifare" strong><p>{l.problemi.join(' ')}</p><a class="btn small" href={href('/')}>Rifai la foto</a></Callout>}
       {l && l.valida && <p style={{ margin: 0 }}>EV <b class="value">{l.ev}</b> · {l.evDescrizione}{l.temperaturaK ? <> · {l.temperaturaK} K</> : null}{l.luceMista?.livello === 'si' ? ' · luce mista' : ''}</p>}
 
       {s.tags.includes('video') && (
